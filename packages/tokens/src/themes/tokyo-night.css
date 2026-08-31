@@ -1,0 +1,10 @@
+[data-theme="tokyo-night"] {
+  --bg-primary: #1a1b26;
+  --bg-secondary: #1f2335;
+  --bg-card: #24283b;
+  --text-primary: #c0caf5;
+  --text-secondary: #565f89;
+  --accent: #7aa2f7;
+  --accent-warm: #ff9e64;
+  --border: #3b4261;
+}

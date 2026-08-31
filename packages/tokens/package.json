@@ -1,0 +1,22 @@
+{
+  "name": "@pediment/tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for Pediment — Spatial Materialism, Amoebic UI, themes",
+  "type": "module",
+  "main": "src/index.css",
+  "exports": {
+    ".": "./src/index.css",
+    "./spatial-materialism": "./src/spatial-materialism.css",
+    "./amoebic-ui": "./src/amoebic-ui.css",
+    "./brutalist": "./src/brutalist.css",
+    "./typography": "./src/typography.css",
+    "./animations": "./src/animations.css",
+    "./themes/midnight-navy": "./src/themes/midnight-navy.css",
+    "./themes/tokyo-night": "./src/themes/tokyo-night.css",
+    "./themes/arctic-dawn": "./src/themes/arctic-dawn.css",
+    "./themes/solaris": "./src/themes/solaris.css",
+    "./themes/light": "./src/themes/light.css"
+  },
+  "files": ["src"],
+  "license": "MIT OR Apache-2.0"
+}

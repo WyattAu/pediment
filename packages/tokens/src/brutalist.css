@@ -1,0 +1,7 @@
+/* Brutalist Design System — Sharp resets, heavy weights */
+
+@theme {
+  --font-weight-brutal: 800;
+  --letter-spacing-tight: -0.04em;
+  --border-radius-brutal: 0;
+}

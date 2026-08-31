@@ -1,0 +1,18 @@
+{
+  "name": "@pediment/starlight",
+  "version": "0.1.0",
+  "description": "Starlight plugin for Pediment design system integration",
+  "type": "module",
+  "main": "index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./Head.astro": "./src/components/Head.astro",
+    "./Header.astro": "./src/components/Header.astro"
+  },
+  "files": ["src", "index.ts"],
+  "peerDependencies": {
+    "@astrojs/starlight": ">=0.32.0",
+    "astro": ">=5.0.0"
+  },
+  "license": "MIT OR Apache-2.0"
+}

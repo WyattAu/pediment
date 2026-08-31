@@ -1,0 +1,13 @@
+---
+export interface Props {
+  copyright?: string;
+}
+
+const { copyright = `© ${new Date().getFullYear()}` } = Astro.props;
+---
+
+<footer class="border-t border-[var(--border)] bg-[var(--bg-secondary)]">
+  <div class="mx-auto max-w-[var(--max-width)] px-4 py-8 text-center text-sm text-[var(--text-secondary)]">
+    <p>{copyright}</p>
+  </div>
+</footer>

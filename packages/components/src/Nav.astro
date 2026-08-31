@@ -1,0 +1,21 @@
+---
+export interface Props {
+  links: Array<{ label: string; href: string }>;
+  siteName: string;
+}
+
+const { links, siteName } = Astro.props;
+---
+
+<nav class="sticky top-0 z-[var(--z-nav)] border-b border-[var(--border)] bg-[var(--bg-primary)]/80 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-[var(--max-width)] items-center justify-between px-4 py-3">
+    <a href="/" class="text-lg font-bold">{siteName}</a>
+    <div class="flex gap-4">
+      {links.map((link) => (
+        <a href={link.href} class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
