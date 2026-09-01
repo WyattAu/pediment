@@ -30,3 +30,21 @@ export type { TooltipProps } from "./Tooltip";
 
 export { default as Pagination } from "./Pagination";
 export type { PaginationProps } from "./Pagination";
+
+export { default as Popover } from "./Popover";
+export type { PopoverProps } from "./Popover";
+
+export { default as CommandPalette } from "./CommandPalette";
+export type { CommandItem, CommandPaletteProps } from "./CommandPalette";
+
+export { default as Skeleton, SkeletonText, SkeletonCard } from "./Skeleton";
+export type { SkeletonProps } from "./Skeleton";
+
+export { default as DatePicker } from "./DatePicker";
+export type { DatePickerProps } from "./DatePicker";
+
+export { default as FileUpload } from "./FileUpload";
+export type { FileUploadProps } from "./FileUpload";
+
+export { default as Avatar } from "./Avatar";
+export type { AvatarProps } from "./Avatar";
