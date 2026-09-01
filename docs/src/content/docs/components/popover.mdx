@@ -1,0 +1,95 @@
+---
+title: Popover
+description: Floating content anchored to a trigger element
+---
+
+A popover component for displaying floating content anchored to a trigger element.
+
+## Import
+
+```tsx
+import { Popover, PopoverTrigger, PopoverContent } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<Popover>
+  <PopoverTrigger>
+    <Button>Open Popover</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <p>Popover content goes here.</p>
+  </PopoverContent>
+</Popover>
+```
+
+## Props
+
+### Popover
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `placement` | `"top" \| "bottom" \| "left" \| "right"` | `"bottom"` | Popover position |
+| `offset` | `number` | `8` | Distance from trigger |
+| `open` | `boolean` | - | Controlled open state |
+| `onOpenChange` | `(open: boolean) => void` | - | Open state change handler |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Popover components |
+
+### PopoverTrigger
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `JSX.Element` | required | Trigger element |
+| `asChild` | `boolean` | `false` | Render as child element |
+
+### PopoverContent
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `align` | `"start" \| "center" \| "end"` | `"center"` | Alignment relative to trigger |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Content |
+
+## Examples
+
+### With Close Button
+
+```tsx
+<Popover>
+  <PopoverTrigger>
+    <Button>Options</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <div class="flex justify-between items-center">
+      <span>Settings</span>
+      <Button size="sm" onClick={handleSave}>Save</Button>
+    </div>
+  </PopoverContent>
+</Popover>
+```
+
+### Right-Aligned
+
+```tsx
+<Popover placement="right" offset={12}>
+  <PopoverTrigger>
+    <IconButton icon="ellipsis" />
+  </PopoverTrigger>
+  <PopoverContent align="end">
+    <Menu>
+      <MenuItem>Edit</MenuItem>
+      <MenuItem>Delete</MenuItem>
+    </Menu>
+  </PopoverContent>
+</Popover>
+```
+
+## Accessibility
+
+- Popover is focusable and keyboard navigable
+- Escape key closes the popover
+- Focus is trapped within the popover when open
+- ARIA attributes describe the relationship to the trigger
+- Focus returns to the trigger on close

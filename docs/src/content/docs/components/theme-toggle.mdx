@@ -1,0 +1,61 @@
+---
+title: ThemeToggle
+description: Toggle between light and dark themes
+---
+
+A toggle component for switching between light and dark color themes.
+
+## Import
+
+```tsx
+import { ThemeToggle } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<ThemeToggle />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `theme` | `"light" \| "dark" \| "system"` | `"system"` | Current theme |
+| `onChange` | `(theme: "light" \| "dark" \| "system") => void` | - | Theme change handler |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Toggle size |
+| `showLabel` | `boolean` | `false` | Show theme label |
+| `className` | `string` | - | Additional CSS classes |
+
+## Examples
+
+### With Label
+
+```tsx
+<ThemeToggle showLabel />
+```
+
+### Controlled Theme
+
+```tsx
+const [theme, setTheme] = createSignal<"light" | "dark" | "system">("system");
+
+<ThemeToggle theme={theme()} onChange={setTheme} showLabel />
+```
+
+### In Navigation
+
+```tsx
+<nav class="flex items-center gap-4">
+  <a href="/home">Home</a>
+  <a href="/settings">Settings</a>
+  <ThemeToggle size="sm" />
+</nav>
+```
+
+## Accessibility
+
+- Toggle button has `aria-label` describing the action
+- Current theme state is announced to screen readers
+- Keyboard accessible via Enter and Space
+- Theme change is announced via `aria-live` region

@@ -1,0 +1,61 @@
+---
+title: ErrorBoundary
+description: Catches errors and displays a fallback UI
+---
+
+A component that catches JavaScript errors in its child tree and displays a fallback UI instead of crashing the entire application.
+
+## Import
+
+```tsx
+import { ErrorBoundary } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<ErrorBoundary fallback={(error) => <p>Something went wrong: {error.message}</p>}>
+  <BuggyComponent />
+</ErrorBoundary>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `fallback` | `JSX.Element \| ((error: Error) => JSX.Element)` | required | Fallback UI or render function |
+| `onError` | `(error: Error, info: ErrorInfo) => void` | - | Error reporting handler |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Content to protect |
+
+## Examples
+
+### With Error Reporting
+
+```tsx
+<ErrorBoundary
+  fallback={<p>Something went wrong.</p>}
+  onError={(error, info) => reportError(error, info)}
+>
+  <Dashboard />
+</ErrorBoundary>
+```
+
+### With Retry Button
+
+```tsx
+<ErrorBoundary fallback={(error) => (
+  <div>
+    <p>Error: {error.message}</p>
+    <Button onClick={() => window.location.reload()}>Retry</Button>
+  </div>
+)}>
+  <DataLoader />
+</ErrorBoundary>
+```
+
+## Accessibility
+
+- Error messages are displayed as text content
+- Focus moves to the fallback UI on error
+- Screen readers announce the error state

@@ -1,0 +1,84 @@
+---
+title: Select
+description: Dropdown select with search and multi-select
+---
+
+A dropdown select component with optional search, multi-select, and custom option rendering.
+
+## Import
+
+```tsx
+import { Select, SelectOption } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+const [value, setValue] = createSignal<string>("");
+
+<Select value={value()} onChange={setValue}>
+  <SelectOption value="apple">Apple</SelectOption>
+  <SelectOption value="banana">Banana</SelectOption>
+  <SelectOption value="cherry">Cherry</SelectOption>
+</Select>
+```
+
+## Props
+
+### Select
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string \| string[]` | - | Selected value(s) |
+| `onChange` | `(value: string \| string[]) => void` | - | Change handler |
+| `placeholder` | `string` | `"Select an option"` | Placeholder text |
+| `multiple` | `boolean` | `false` | Allow multiple selections |
+| `searchable` | `boolean` | `false` | Enable search filtering |
+| `disabled` | `boolean` | `false` | Disable the select |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Select size |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Select options |
+
+### SelectOption
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | required | Option value |
+| `disabled` | `boolean` | `false` | Disable the option |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Option content |
+
+## Examples
+
+### Searchable Select
+
+```tsx
+<Select searchable placeholder="Search countries..." onChange={setCountry}>
+  <SelectOption value="us">United States</SelectOption>
+  <SelectOption value="uk">United Kingdom</SelectOption>
+  <SelectOption value="ca">Canada</SelectOption>
+</Select>
+```
+
+### Multi-Select
+
+```tsx
+<Select
+  multiple
+  value={selectedTags()}
+  onChange={setSelectedTags}
+  placeholder="Select tags..."
+>
+  <SelectOption value="react">React</SelectOption>
+  <SelectOption value="vue">Vue</SelectOption>
+  <SelectOption value="svelte">Svelte</SelectOption>
+</Select>
+```
+
+## Accessibility
+
+- Dropdown opens with Enter or Space
+- Arrow keys navigate between options
+- Type-ahead search filters options
+- Selected state is announced to screen readers
+- Focus returns to trigger on close

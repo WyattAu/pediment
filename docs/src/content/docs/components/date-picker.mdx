@@ -1,0 +1,61 @@
+---
+title: DatePicker
+description: A date picker with calendar interface
+---
+
+A date selection component with a calendar dropdown for picking dates.
+
+## Import
+
+```tsx
+import { DatePicker } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+const [date, setDate] = createSignal<Date | null>(null);
+
+<DatePicker value={date()} onChange={setDate} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `Date \| null` | - | Selected date |
+| `onChange` | `(date: Date) => void` | - | Date change handler |
+| `min` | `Date` | - | Minimum selectable date |
+| `max` | `Date` | - | Maximum selectable date |
+| `placeholder` | `string` | `"Select date"` | Placeholder text |
+| `disabled` | `boolean` | `false` | Disable the picker |
+| `format` | `string` | `"MMM DD, YYYY"` | Display format |
+| `className` | `string` | - | Additional CSS classes |
+
+## Examples
+
+### With Constraints
+
+```tsx
+<DatePicker
+  value={date()}
+  onChange={setDate}
+  min={new Date()}
+  max={new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)}
+  placeholder="Select a date in the next 30 days"
+/>
+```
+
+### Disabled State
+
+```tsx
+<DatePicker value={new Date()} disabled />
+```
+
+## Accessibility
+
+- Calendar opens with Enter or Space on the input
+- Arrow keys navigate between dates
+- Enter selects the focused date
+- Escape closes the calendar
+- Selected date is announced to screen readers

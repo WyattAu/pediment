@@ -1,0 +1,62 @@
+---
+title: Pagination
+description: Navigate between pages of content
+---
+
+A pagination component for navigating through paginated data.
+
+## Import
+
+```tsx
+import { Pagination } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<Pagination currentPage={1} totalPages={10} onPageChange={setPage} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `currentPage` | `number` | required | Current active page |
+| `totalPages` | `number` | required | Total number of pages |
+| `onPageChange` | `(page: number) => void` | required | Page change handler |
+| `siblingCount` | `number` | `1` | Number of sibling pages to show |
+| `showFirstLast` | `boolean` | `true` | Show first/last buttons |
+| `showPrevNext` | `boolean` | `true` | Show previous/next buttons |
+| `disabled` | `boolean` | `false` | Disable all interactions |
+| `className` | `string` | - | Additional CSS classes |
+
+## Examples
+
+### With Siblings
+
+```tsx
+<Pagination
+  currentPage={5}
+  totalPages={20}
+  siblingCount={2}
+  onPageChange={setPage}
+/>
+```
+
+### Compact Pagination
+
+```tsx
+<Pagination
+  currentPage={3}
+  totalPages={10}
+  showFirstLast={false}
+  onPageChange={setPage}
+/>
+```
+
+## Accessibility
+
+- Navigation uses an `<nav>` element with `aria-label="Pagination"`
+- Current page has `aria-current="page"`
+- Page buttons are keyboard accessible
+- Disabled states are announced to screen readers

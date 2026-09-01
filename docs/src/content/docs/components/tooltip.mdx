@@ -1,0 +1,67 @@
+---
+title: Tooltip
+description: Informational tooltip on hover or focus
+---
+
+A tooltip that displays additional information when hovering or focusing a trigger element.
+
+## Import
+
+```tsx
+import { Tooltip } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<Tooltip content="This is a tooltip">
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `JSX.Element \| string` | required | Tooltip content |
+| `placement` | `"top" \| "bottom" \| "left" \| "right"` | `"top"` | Tooltip position |
+| `delay` | `number` | `300` | Show delay in ms |
+| `duration` | `number` | - | Auto-hide duration in ms |
+| `arrow` | `boolean` | `true` | Show arrow |
+| `disabled` | `boolean` | `false` | Disable the tooltip |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Trigger element |
+
+## Examples
+
+### With Delay
+
+```tsx
+<Tooltip content="Loading..." delay={500}>
+  <Button>Hover after 500ms</Button>
+</Tooltip>
+```
+
+### Right Placement
+
+```tsx
+<Tooltip content="More information" placement="right">
+  <IconButton icon="info" />
+</Tooltip>
+```
+
+### Disabled Tooltip
+
+```tsx
+<Tooltip content="Unavailable" disabled>
+  <Button disabled>Disabled</Button>
+</Tooltip>
+```
+
+## Accessibility
+
+- Tooltip appears on focus as well as hover
+- Content is linked via `aria-describedby`
+- Arrow points to the trigger element
+- Tooltip is hidden when trigger loses focus
+- Screen readers announce the tooltip content

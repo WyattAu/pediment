@@ -1,0 +1,103 @@
+---
+title: Tabs
+description: Tabbed navigation for organizing content
+---
+
+A tabbed interface for switching between different content panels.
+
+## Import
+
+```tsx
+import { Tabs, TabList, Tab, TabPanel, TabPanels } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<Tabs defaultValue="tab1">
+  <TabList>
+    <Tab value="tab1">First</Tab>
+    <Tab value="tab2">Second</Tab>
+    <Tab value="tab3">Third</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel value="tab1">Content 1</TabPanel>
+    <TabPanel value="tab2">Content 2</TabPanel>
+    <TabPanel value="tab3">Content 3</TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
+## Props
+
+### Tabs
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `defaultValue` | `string` | required | Initially active tab |
+| `value` | `string` | - | Controlled active tab |
+| `onChange` | `(value: string) => void` | - | Tab change handler |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Tab components |
+
+### TabList
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Tab elements |
+
+### Tab
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | required | Tab identifier |
+| `disabled` | `boolean` | `false` | Disable the tab |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Tab label |
+
+### TabPanel
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | required | Corresponding tab value |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Panel content |
+
+## Examples
+
+### Controlled Tabs
+
+```tsx
+const [activeTab, setActiveTab] = createSignal("tab1");
+
+<Tabs value={activeTab()} onChange={setActiveTab}>
+  <TabList>
+    <Tab value="tab1">Overview</Tab>
+    <Tab value="tab2">Details</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel value="tab1">Overview content</TabPanel>
+    <TabPanel value="tab2">Details content</TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
+### Disabled Tab
+
+```tsx
+<Tabs defaultValue="active">
+  <TabList>
+    <Tab value="active">Active</Tab>
+    <Tab value="disabled" disabled>Unavailable</Tab>
+  </TabList>
+</Tabs>
+```
+
+## Accessibility
+
+- Tabs use `role="tablist"`, `role="tab"`, and `role="tabpanel"`
+- Arrow keys navigate between tabs
+- Active tab has `aria-selected="true"`
+- Tab panels are linked to tabs via `aria-controls`
+- Disabled tabs are marked with `aria-disabled`

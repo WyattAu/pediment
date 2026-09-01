@@ -1,0 +1,89 @@
+---
+title: CommandPalette
+description: A command palette for quick actions and navigation
+---
+
+A keyboard-driven command palette for searching and executing actions across your application.
+
+## Import
+
+```tsx
+import { CommandPalette, CommandGroup, CommandItem } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+const [isOpen, setIsOpen] = createSignal(false);
+
+<CommandPalette open={isOpen()} onClose={() => setIsOpen(false)}>
+  <CommandGroup heading="Actions">
+    <CommandItem onSelect={handleNewFile}>New File</CommandItem>
+    <CommandItem onSelect={handleSave}>Save</CommandItem>
+  </CommandGroup>
+</CommandPalette>
+```
+
+## Props
+
+### CommandPalette
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | required | Controls visibility |
+| `onClose` | `() => void` | required | Close handler |
+| `placeholder` | `string` | `"Type a command..."` | Search placeholder |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Command groups and items |
+
+### CommandGroup
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `heading` | `string` | - | Group heading |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Command items |
+
+### CommandItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `onSelect` | `() => void` | - | Selection handler |
+| `disabled` | `boolean` | `false` | Disable the item |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Item content |
+
+## Examples
+
+### With Search and Groups
+
+```tsx
+<CommandPalette open={isOpen()} onClose={() => setIsOpen(false)}>
+  <CommandGroup heading="Navigation">
+    <CommandItem onSelect={() => navigate("/home")}>Home</CommandItem>
+    <CommandItem onSelect={() => navigate("/settings")}>Settings</CommandItem>
+  </CommandGroup>
+  <CommandGroup heading="Actions">
+    <CommandItem onSelect={handleLogout}>Log Out</CommandItem>
+  </CommandGroup>
+</CommandPalette>
+```
+
+### With Keyboard Shortcut Display
+
+```tsx
+<CommandGroup heading="File">
+  <CommandItem onSelect={handleSave}>
+    <span>Save</span>
+    <kbd>Ctrl+S</kbd>
+  </CommandItem>
+</CommandGroup>
+```
+
+## Accessibility
+
+- Arrow keys navigate between items
+- Enter selects the highlighted item
+- Escape closes the palette
+- Items are announced to screen readers
+- Focus is managed and restored on close

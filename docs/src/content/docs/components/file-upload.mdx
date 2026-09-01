@@ -1,0 +1,62 @@
+---
+title: FileUpload
+description: Drag-and-drop file upload with preview
+---
+
+A file upload component supporting drag-and-drop and click-to-browse with file preview.
+
+## Import
+
+```tsx
+import { FileUpload } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<FileUpload onFilesChange={(files) => console.log(files)} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `onFilesChange` | `(files: File[]) => void` | required | Files change handler |
+| `accept` | `string \| string[]` | - | Accepted file types (MIME or extensions) |
+| `multiple` | `boolean` | `false` | Allow multiple files |
+| `maxFiles` | `number` | - | Maximum number of files |
+| `maxSize` | `number` | - | Maximum file size in bytes |
+| `disabled` | `boolean` | `false` | Disable the upload area |
+| `preview` | `boolean` | `true` | Show file previews |
+| `className` | `string` | - | Additional CSS classes |
+
+## Examples
+
+### Image Upload
+
+```tsx
+<FileUpload
+  accept="image/*"
+  multiple
+  maxFiles={5}
+  maxSize={5 * 1024 * 1024}
+  onFilesChange={handleFiles}
+/>
+```
+
+### Document Upload
+
+```tsx
+<FileUpload
+  accept={["application/pdf", "text/csv"]}
+  multiple={false}
+  onFilesChange={(files) => setSelectedFile(files[0])}
+/>
+```
+
+## Accessibility
+
+- Drop zone is focusable and announces itself
+- File input is hidden but accessible via keyboard
+- Error messages for invalid files are announced
+- Drag-and-drop state changes are announced

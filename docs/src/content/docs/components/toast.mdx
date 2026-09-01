@@ -1,0 +1,77 @@
+---
+title: Toast
+description: Notification toasts for user feedback
+---
+
+A toast notification system for displaying brief messages about actions or events.
+
+## Import
+
+```tsx
+import { Toast, useToast } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+const { toast } = useToast();
+
+<Button onClick={() => toast({ title: "Saved!", variant: "success" })}>
+  Save
+</Button>
+```
+
+## Props
+
+### Toast Options
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | required | Toast title |
+| `description` | `string` | - | Toast description |
+| `variant` | `"default" \| "success" \| "warning" \| "danger"` | `"default"` | Visual style |
+| `duration` | `number` | `5000` | Auto-dismiss time in ms |
+| `action` | `{ label: string; onClick: () => void }` | - | Action button |
+| `onDismiss` | `() => void` | - | Dismiss callback |
+
+### useToast
+
+| Method | Type | Description |
+|--------|------|-------------|
+| `toast` | `(options: ToastOptions) => void` | Show a toast |
+| `dismiss` | `(id: string) => void` | Dismiss a toast |
+| `dismissAll` | `() => void` | Dismiss all toasts |
+
+## Examples
+
+### With Action
+
+```tsx
+toast({
+  title: "File deleted",
+  description: "The file has been permanently removed.",
+  variant: "danger",
+  action: {
+    label: "Undo",
+    onClick: handleUndo,
+  },
+});
+```
+
+### Auto-Dismiss
+
+```tsx
+toast({
+  title: "Copied to clipboard",
+  variant: "success",
+  duration: 2000,
+});
+```
+
+## Accessibility
+
+- Toasts are announced via `aria-live` region
+- Focus moves to the toast on appearance
+- Dismiss button has appropriate `aria-label`
+- Multiple toasts stack vertically
+- Toasts are auto-dismissed and keyboard dismissible

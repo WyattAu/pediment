@@ -1,0 +1,64 @@
+---
+title: Badge
+description: Status badges and tags for labeling content
+---
+
+A lightweight component for displaying status indicators, labels, or tags.
+
+## Import
+
+```tsx
+import { Badge } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<Badge>Default</Badge>
+<Badge variant="success">Active</Badge>
+<Badge variant="danger">Error</Badge>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `"default" \| "success" \| "warning" \| "danger" \| "info"` | `"default"` | Visual style |
+| `size` | `"sm" \| "md" \| "lg"` | `"md"` | Badge size |
+| `dot` | `boolean` | `false` | Show status dot |
+| `removable` | `boolean` | `false` | Show remove button |
+| `onRemove` | `() => void` | - | Remove click handler |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Badge content |
+
+## Examples
+
+### With Dot Indicator
+
+```tsx
+<Badge variant="success" dot>Online</Badge>
+<Badge variant="danger" dot>Offline</Badge>
+```
+
+### Removable Badge
+
+```tsx
+<Badge variant="info" removable onRemove={() => handleRemove("tag1")}>
+  JavaScript
+</Badge>
+```
+
+### Badge Sizes
+
+```tsx
+<Badge size="sm">Small</Badge>
+<Badge size="md">Medium</Badge>
+<Badge size="lg">Large</Badge>
+```
+
+## Accessibility
+
+- Badge content is read by screen readers
+- Remove button has appropriate `aria-label`
+- Color contrast meets WCAG AA standards
+- Status dots are announced via `aria-label`

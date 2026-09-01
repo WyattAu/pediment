@@ -1,0 +1,63 @@
+---
+title: Avatar
+description: User avatar with image and fallback support
+---
+
+A component for displaying user avatars with automatic fallback to initials or an icon.
+
+## Import
+
+```tsx
+import { Avatar } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<Avatar src="/avatar.jpg" name="Alice Smith" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | - | Image URL |
+| `alt` | `string` | - | Alt text for image |
+| `name` | `string` | - | User name for fallback initials |
+| `size` | `"xs" \| "sm" \| "md" \| "lg" \| "xl"` | `"md"` | Avatar size |
+| `shape` | `"circle" \| "square"` | `"circle"` | Avatar shape |
+| `status` | `"online" \| "offline" \| "away" \| "busy"` | - | Status indicator |
+| `className` | `string` | - | Additional CSS classes |
+
+## Examples
+
+### With Fallback Initials
+
+```tsx
+<Avatar name="John Doe" /> {/* Renders "JD" */}
+<Avatar name="Alice" />    {/* Renders "A" */}
+```
+
+### With Status Indicator
+
+```tsx
+<Avatar src="/avatar.jpg" name="Alice" status="online" />
+<Avatar src="/avatar.jpg" name="Bob" status="away" />
+```
+
+### Avatar Group
+
+```tsx
+<div class="flex -space-x-2">
+  <Avatar src="/alice.jpg" name="Alice" />
+  <Avatar src="/bob.jpg" name="Bob" />
+  <Avatar src="/charlie.jpg" name="Charlie" />
+</div>
+```
+
+## Accessibility
+
+- Images include appropriate `alt` text
+- Fallback initials are announced as the user's name
+- Status indicators are described via `aria-label`
+- Decorative avatars use `role="presentation"`

@@ -1,0 +1,82 @@
+---
+title: Accordion
+description: Collapsible sections for organizing content
+---
+
+A set of expandable sections that allow users to show and hide related content.
+
+## Import
+
+```tsx
+import { Accordion, AccordionItem } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<Accordion>
+  <AccordionItem title="Section 1">
+    <p>Content for section 1.</p>
+  </AccordionItem>
+  <AccordionItem title="Section 2">
+    <p>Content for section 2.</p>
+  </AccordionItem>
+</Accordion>
+```
+
+## Props
+
+### Accordion
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `multiple` | `boolean` | `false` | Allow multiple sections open |
+| `defaultOpen` | `string[]` | `[]` | IDs of initially open items |
+| `onToggle` | `(open: string[]) => void` | - | Toggle change handler |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Accordion items |
+
+### AccordionItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | required | Section header text |
+| `id` | `string` | - | Unique identifier |
+| `disabled` | `boolean` | `false` | Disable expand/collapse |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Section content |
+
+## Examples
+
+### Multiple Open Sections
+
+```tsx
+<Accordion multiple>
+  <AccordionItem title="Account">
+    <p>Account settings content.</p>
+  </AccordionItem>
+  <AccordionItem title="Notifications">
+    <p>Notification preferences.</p>
+  </AccordionItem>
+</Accordion>
+```
+
+### With Default Open
+
+```tsx
+<Accordion defaultOpen={["general"]}>
+  <AccordionItem id="general" title="General">
+    <p>General settings.</p>
+  </AccordionItem>
+  <AccordionItem id="advanced" title="Advanced">
+    <p>Advanced settings.</p>
+  </AccordionItem>
+</Accordion>
+```
+
+## Accessibility
+
+- Sections are collapsible via Enter and Space keys
+- ARIA attributes indicate expanded/collapsed state
+- Focus management follows document flow
+- Disabled items are skipped during keyboard navigation
