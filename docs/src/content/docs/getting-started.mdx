@@ -1,0 +1,87 @@
+---
+title: Installation
+description: How to install and set up Pediment in your project
+---
+
+## Prerequisites
+
+- Node.js 18+ or Bun 1.0+
+- Astro 5.0+
+- SolidJS (if using components)
+
+## Using the CLI
+
+The fastest way to start a new Pediment project:
+
+```bash
+bunx pediment init my-project
+cd my-project
+bun install
+bun run dev
+```
+
+This creates a new project with the Astro+SolidJS template pre-configured.
+
+## Manual Installation
+
+### 1. Install Packages
+
+```bash
+# Add core packages
+bun add pediment-tokens pediment-components
+
+# Add hooks (optional)
+bun add pediment-hooks
+
+# Add utilities (optional)
+bun add pediment-utils
+
+# Add Starlight plugin (for docs sites)
+bun add pediment-starlight
+```
+
+### 2. Configure Astro
+
+```typescript
+// astro.config.ts
+import { defineConfig } from "astro/config";
+import solid from "@astrojs/solidjs";
+import starlight from "@astrojs/starlight";
+import pedimentStarlight from "pediment-starlight";
+
+export default defineConfig({
+  integrations: [
+    solid(),
+    starlight({
+      title: "My Documentation",
+      plugins: [pedimentStarlight()],
+    }),
+  ],
+});
+```
+
+### 3. Import Styles
+
+```typescript
+// src/styles/global.css
+@import "pediment-tokens";
+```
+
+## Project Structure
+
+```
+my-project/
+├── src/
+│   ├── components/
+│   ├── styles/
+│   └── pages/
+├── astro.config.ts
+├── package.json
+└── tsconfig.json
+```
+
+## Next Steps
+
+- [Components](/components/data-table) - Explore available UI components
+- [Design Tokens](/tokens) - Learn about the token system
+- [Themes](/themes) - Customize the look and feel

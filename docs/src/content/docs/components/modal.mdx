@@ -1,0 +1,151 @@
+---
+title: Modal
+description: An accessible dialog component with customizable content and actions
+---
+
+A modal dialog component for displaying content that requires user attention or interaction.
+
+## Import
+
+```tsx
+import { Modal } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+const [isOpen, setIsOpen] = createSignal(false);
+
+<Modal open={isOpen()} onClose={() => setIsOpen(false)}>
+  <Modal.Header>
+    <Modal.Title>Confirm Action</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <p>Are you sure you want to proceed?</p>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button variant="primary" onClick={handleConfirm}>Confirm</Button>
+  </Modal.Footer>
+</Modal>
+```
+
+## Props
+
+### Modal (Root)
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | required | Controls modal visibility |
+| `onClose` | `() => void` | required | Called when modal should close |
+| `size` | `"sm" \| "md" \| "lg" \| "xl" \| "full"` | `"md"` | Modal size |
+| `closeOnOverlay` | `boolean` | `true` | Close when clicking overlay |
+| `closeOnEsc` | `boolean` | `true` | Close on Escape key |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Modal content |
+
+### Modal.Header
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `JSX.Element` | required | Header content |
+| `showClose` | `boolean` | `true` | Show close button |
+
+### Modal.Title
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `JSX.Element` | required | Title text |
+| `as` | `string` | `"h2"` | Heading element type |
+
+### Modal.Body
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Body content |
+
+### Modal.Footer
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | Footer content (usually buttons) |
+
+## Examples
+
+### Simple Confirmation
+
+```tsx
+<Modal open={showConfirm()} onClose={() => setShowConfirm(false)}>
+  <Modal.Header>
+    <Modal.Title>Delete Item</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <p>This action cannot be undone.</p>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onClick={() => setShowConfirm(false)}>Cancel</Button>
+    <Button variant="danger" onClick={handleDelete}>Delete</Button>
+  </Modal.Footer>
+</Modal>
+```
+
+### Large Modal with Form
+
+```tsx
+<Modal open={isOpen()} onClose={() => setIsOpen(false)} size="lg">
+  <Modal.Header>
+    <Modal.Title>Edit Profile</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <form onSubmit={handleSubmit}>
+      <FormField label="Name">
+        <Input value={name} onInput={(e) => setName(e.currentTarget.value)} />
+      </FormField>
+      <FormField label="Email">
+        <Input type="email" value={email} onInput={(e) => setEmail(e.currentTarget.value)} />
+      </FormField>
+    </form>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+    <Button variant="primary" onClick={handleSubmit}>Save Changes</Button>
+  </Modal.Footer>
+</Modal>
+```
+
+### Non-Closable Modal
+
+```tsx
+<Modal
+  open={isLoading()}
+  onClose={() => {}} // No-op
+  closeOnOverlay={false}
+  closeOnEsc={false}
+>
+  <Modal.Body>
+    <Spinner />
+    <p>Processing your request...</p>
+  </Modal.Body>
+</Modal>
+```
+
+## Design Guidelines
+
+- Use modals sparingly; prefer inline content when possible
+- Keep modal content focused on a single task
+- Provide clear actions with distinct visual hierarchy
+- Ensure the modal title clearly describes its purpose
+- Use appropriate sizes based on content complexity
+- Consider the user's context; don't interrupt critical workflows
+
+## Accessibility
+
+- Focus is trapped within the modal when open
+- Escape key closes the modal by default
+- Focus returns to the trigger element on close
+- ARIA attributes are automatically applied
+- Screen readers announce the modal title on open
+- Background content is marked as inert
+- Supports both mouse and keyboard interaction

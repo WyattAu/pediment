@@ -1,0 +1,99 @@
+---
+title: DataTable
+description: A flexible data table component with sorting, filtering, and pagination
+---
+
+A powerful data table component for displaying tabular data with built-in support for sorting, filtering, and pagination.
+
+## Import
+
+```tsx
+import { DataTable } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<DataTable
+  columns={[
+    { key: "name", label: "Name" },
+    { key: "email", label: "Email" },
+    { key: "role", label: "Role" },
+  ]}
+  data={[
+    { name: "Alice", email: "alice@example.com", role: "Admin" },
+    { name: "Bob", email: "bob@example.com", role: "User" },
+  ]}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `columns` | `Column[]` | required | Array of column definitions |
+| `data` | `T[]` | required | Array of data objects |
+| `sortable` | `boolean` | `true` | Enable column sorting |
+| `filterable` | `boolean` | `false` | Enable row filtering |
+| `paginated` | `boolean` | `true` | Enable pagination |
+| `pageSize` | `number` | `10` | Number of rows per page |
+| `onSort` | `(key: string, dir: "asc" \| "desc") => void` | - | Sort change handler |
+| `onFilter` | `(query: string) => void` | - | Filter change handler |
+| `onPageChange` | `(page: number) => void` | - | Page change handler |
+| `className` | `string` | - | Additional CSS classes |
+
+### Column Definition
+
+```typescript
+interface Column {
+  key: string;
+  label: string;
+  sortable?: boolean;
+  render?: (value: any, row: any) => JSX.Element;
+  width?: string;
+}
+```
+
+## Examples
+
+### With Custom Rendering
+
+```tsx
+<DataTable
+  columns={[
+    { key: "name", label: "Name" },
+    { key: "status", label: "Status", render: (value) => (
+      <Badge variant={value === "active" ? "success" : "default"}>
+        {value}
+      </Badge>
+    )},
+  ]}
+  data={users}
+/>
+```
+
+### With Filtering
+
+```tsx
+<DataTable
+  columns={columns}
+  data={data}
+  filterable={true}
+  onFilter={(query) => console.log("Filter:", query)}
+/>
+```
+
+## Design Guidelines
+
+- Use clear, descriptive column headers
+- Align numbers to the right for easier comparison
+- Consider using striped rows for better readability in large datasets
+- Provide visual feedback for sortable columns
+- Use pagination for datasets larger than 20 rows
+
+## Accessibility
+
+- Supports keyboard navigation (arrow keys, Enter, Escape)
+- Includes proper ARIA attributes for screen readers
+- Sort indicators are announced to assistive technology
+- Row selection is keyboard accessible

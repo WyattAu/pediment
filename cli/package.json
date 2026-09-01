@@ -1,0 +1,11 @@
+{
+  "name": "pediment",
+  "version": "0.1.0",
+  "description": "CLI for scaffolding Pediment projects",
+  "type": "module",
+  "bin": { "pediment": "./dist/index.js" },
+  "main": "dist/index.js",
+  "scripts": { "build": "tsc", "start": "node dist/index.js" },
+  "dependencies": { "commander": "^12.0.0", "prompts": "^2.4.0" },
+  "devDependencies": { "typescript": "^5.7.0" }
+}

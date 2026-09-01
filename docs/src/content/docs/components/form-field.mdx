@@ -1,0 +1,133 @@
+---
+title: FormField
+description: A composable form field component with label, input, and validation
+---
+
+A flexible form field component that provides consistent styling and validation feedback for form inputs.
+
+## Import
+
+```tsx
+import { FormField, Input, Select, Textarea } from "pediment-components";
+```
+
+## Basic Usage
+
+```tsx
+<FormField label="Email" error={errors.email}>
+  <Input
+    type="email"
+    value={email}
+    onInput={(e) => setEmail(e.currentTarget.value)}
+    placeholder="you@example.com"
+  />
+</FormField>
+```
+
+## Props
+
+### FormField
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | required | Label text |
+| `error` | `string` | - | Error message to display |
+| `hint` | `string` | - | Help text below the field |
+| `required` | `boolean` | `false` | Show required indicator |
+| `disabled` | `boolean` | `false` | Disable the field |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `JSX.Element` | required | The input element |
+
+### Input
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `string` | `"text"` | Input type |
+| `value` | `string` | - | Controlled value |
+| `placeholder` | `string` | - | Placeholder text |
+| `onInput` | `(e: InputEvent) => void` | - | Input change handler |
+| `onBlur` | `(e: FocusEvent) => void` | - | Blur handler |
+| `disabled` | `boolean` | `false` | Disable the input |
+
+### Select
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Selected value |
+| `options` | `{ value: string; label: string }[]` | required | Available options |
+| `onChange` | `(e: Event) => void` | - | Change handler |
+| `placeholder` | `string` | - | Placeholder option |
+
+### Textarea
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Controlled value |
+| `rows` | `number` | `4` | Number of rows |
+| `resize` | `"none" \| "vertical" \| "both"` | `"vertical"` | Resize behavior |
+
+## Examples
+
+### With Validation
+
+```tsx
+<FormField
+  label="Password"
+  error={errors.password}
+  hint="Must be at least 8 characters"
+  required
+>
+  <Input
+    type="password"
+    value={password}
+    onInput={(e) => setPassword(e.currentTarget.value)}
+  />
+</FormField>
+```
+
+### Select Field
+
+```tsx
+<FormField label="Country" required>
+  <Select
+    value={country}
+    onChange={(e) => setCountry(e.currentTarget.value)}
+    options={[
+      { value: "us", label: "United States" },
+      { value: "uk", label: "United Kingdom" },
+      { value: "ca", label: "Canada" },
+    ]}
+    placeholder="Select a country"
+  />
+</FormField>
+```
+
+### Textarea
+
+```tsx
+<FormField label="Bio" hint="Tell us about yourself">
+  <Textarea
+    value={bio}
+    onInput={(e) => setBio(e.currentTarget.value)}
+    rows={6}
+    placeholder="Write something..."
+  />
+</FormField>
+```
+
+## Design Guidelines
+
+- Always pair inputs with labels for accessibility
+- Use consistent label positioning (top-aligned recommended)
+- Display validation errors inline, not in modals
+- Use hint text for complex requirements
+- Maintain consistent spacing between form fields
+- Group related fields with fieldsets and legends
+
+## Accessibility
+
+- Labels are programmatically associated with inputs
+- Error messages are linked via `aria-describedby`
+- Required fields are announced to screen readers
+- Focus management follows natural tab order
+- Color is not the only indicator of validation state
