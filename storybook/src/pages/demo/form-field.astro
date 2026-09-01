@@ -1,0 +1,37 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import FormFieldDemo from '../../components/form-field';
+---
+
+<StoryLayout title="Form Field" description="Validated form inputs">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Form Field</h1>
+    <p class="text-[var(--text-secondary)]">Form inputs with labels, validation, and help text.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <FormFieldDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import FormField from "@pediment-components/FormField";
+
+<FormField
+  name="email"
+  label="Email"
+  type="email"
+  required
+  helpText="We'll never share your email"
+  rules={[
+    { validate: (v) => v.includes("@"), message: "Invalid email" }
+  ]}
+/>`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

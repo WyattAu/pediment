@@ -1,0 +1,74 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Interactive component demos for Pediment' } = Astro.props;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Accordion', href: '/demo/accordion' },
+  { label: 'Avatar', href: '/demo/avatar' },
+  { label: 'Badge', href: '/demo/badge' },
+  { label: 'Command Palette', href: '/demo/command-palette' },
+  { label: 'Data Table', href: '/demo/data-table' },
+  { label: 'Date Picker', href: '/demo/date-picker' },
+  { label: 'File Upload', href: '/demo/file-upload' },
+  { label: 'Form Field', href: '/demo/form-field' },
+  { label: 'Modal', href: '/demo/modal' },
+  { label: 'Pagination', href: '/demo/pagination' },
+  { label: 'Popover', href: '/demo/popover' },
+  { label: 'Select', href: '/demo/select' },
+  { label: 'Skeleton', href: '/demo/skeleton' },
+  { label: 'Tabs', href: '/demo/tabs' },
+  { label: 'Toast', href: '/demo/toast' },
+  { label: 'Tooltip', href: '/demo/tooltip' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — Pediment Storybook</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="fixed inset-y-0 left-0 w-64 border-r border-[var(--border)] bg-[var(--bg-card)] overflow-y-auto z-40">
+        <div class="p-4 border-b border-[var(--border)]">
+          <a href="/" class="text-lg font-bold text-[var(--text-primary)] no-underline hover:no-underline">
+            Pediment Storybook
+          </a>
+          <p class="text-xs text-[var(--text-secondary)] mt-1">Component Demos</p>
+        </div>
+        <nav class="p-2">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class={`block px-3 py-2 text-sm rounded-[var(--radius-sm)] no-underline transition-colors ${
+                currentPath === item.href || currentPath === item.href + '/'
+                  ? 'bg-[var(--accent)]/10 text-[var(--accent)] font-medium'
+                  : 'text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]'
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <!-- Main content -->
+      <main class="flex-1 ml-64">
+        <div class="p-8 max-w-4xl">
+          <slot />
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

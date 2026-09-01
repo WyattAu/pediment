@@ -1,0 +1,33 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import FileUploadDemo from '../../components/file-upload';
+---
+
+<StoryLayout title="File Upload" description="Drag-and-drop file uploads">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">File Upload</h1>
+    <p class="text-[var(--text-secondary)]">Drag-and-drop file upload with size validation.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <FileUploadDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import FileUpload from "@pediment-components/FileUpload";
+
+<FileUpload
+  accept="image/*"
+  multiple
+  maxSize={5 * 1024 * 1024}
+  onFiles={(files) => console.log(files)}
+/>`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

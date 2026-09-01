@@ -1,7 +1,7 @@
 {
-  "name": "@pediment/tokens",
+  "name": "pediment-tokens",
   "version": "0.1.0",
-  "description": "Design tokens for Pediment — Spatial Materialism, Amoebic UI, themes",
+  "description": "Design tokens for Pediment \u2014 Spatial Materialism, Amoebic UI, themes",
   "type": "module",
   "main": "src/index.css",
   "exports": {
@@ -17,6 +17,8 @@
     "./themes/solaris": "./src/themes/solaris.css",
     "./themes/light": "./src/themes/light.css"
   },
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "license": "MIT OR Apache-2.0"
 }

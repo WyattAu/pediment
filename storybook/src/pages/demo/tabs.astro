@@ -1,0 +1,35 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import TabsDemo from '../../components/tabs';
+---
+
+<StoryLayout title="Tabs" description="Tabbed content navigation">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Tabs</h1>
+    <p class="text-[var(--text-secondary)]">Tabbed content navigation with multiple variants.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <TabsDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import Tabs, { TabPanel } from "@pediment-components/Tabs";
+
+const tabs = [
+  { id: "overview", label: "Overview", icon: "📋" },
+  { id: "settings", label: "Settings", icon: "⚙️" },
+];
+
+<Tabs tabs={tabs} variant="underline" onChange={setActive} />
+<TabPanel tabId="overview" activeTab={active}>Overview content</TabPanel>
+<TabPanel tabId="settings" activeTab={active}>Settings content</TabPanel>`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

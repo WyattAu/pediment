@@ -2,6 +2,7 @@
   "name": "pediment",
   "version": "0.1.0",
   "private": true,
+  "workspaces": ["packages/*", "showcase", "storybook"],
   "description": "Shared design tokens, components, hooks, and utilities for Astro+SolidJS+Starlight+Cloudflare projects",
   "type": "module",
   "scripts": {
@@ -13,8 +14,12 @@
     "check": "biome check ."
   },
   "devDependencies": {
+    "@astrojs/starlight": "^0.41.11",
     "@biomejs/biome": "^2.0.0",
-    "turbo": "^2.0.0"
+    "astro": "^7.2.10",
+    "solid-js": "^1.9.15",
+    "turbo": "^2.0.0",
+    "typescript": "^7.0.2"
   },
   "packageManager": "bun@1.3.0",
   "license": "MIT OR Apache-2.0"

@@ -6,7 +6,7 @@ export function useLocalStorage<T>(key: string, defaultValue: T) {
   onMount(() => {
     try {
       const stored = localStorage.getItem(key);
-      if (stored) setValue(JSON.parse(stored));
+      if (stored) setValue(JSON.parse(stored) as T);
     } catch {}
   });
 

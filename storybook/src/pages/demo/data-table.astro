@@ -1,0 +1,34 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import DataTableDemo from '../../components/data-table';
+---
+
+<StoryLayout title="Data Table" description="Sortable, searchable data grids">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Data Table</h1>
+    <p class="text-[var(--text-secondary)]">Sortable, searchable data tables with pagination.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <DataTableDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import DataTable from "@pediment-components/DataTable";
+
+const columns = [
+  { key: "name", header: "Name", sortable: true },
+  { key: "email", header: "Email" },
+  { key: "role", header: "Role", sortable: true },
+];
+
+<DataTable data={users} columns={columns} pageSize={5} searchable />`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

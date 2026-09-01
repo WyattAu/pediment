@@ -1,0 +1,72 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import AccordionDemo from '../../components/accordion';
+---
+
+<StoryLayout title="Accordion" description="Collapsible content sections">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Accordion</h1>
+    <p class="text-[var(--text-secondary)]">Collapsible content sections with single or multiple open panels.</p>
+  </div>
+
+  <div class="space-y-8">
+    <!-- Basic -->
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Basic Usage</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <AccordionDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <!-- Props -->
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Props</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-[var(--bg-secondary)] border-b border-[var(--border)]">
+              <th class="px-4 py-2 text-left font-medium">Prop</th>
+              <th class="px-4 py-2 text-left font-medium">Type</th>
+              <th class="px-4 py-2 text-left font-medium">Default</th>
+              <th class="px-4 py-2 text-left font-medium">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>items</code></td>
+              <td class="px-4 py-2">AccordionItem[]</td>
+              <td class="px-4 py-2">—</td>
+              <td class="px-4 py-2">Array of accordion items</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>multiple</code></td>
+              <td class="px-4 py-2">boolean</td>
+              <td class="px-4 py-2">false</td>
+              <td class="px-4 py-2">Allow multiple panels open</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>defaultOpen</code></td>
+              <td class="px-4 py-2">string[]</td>
+              <td class="px-4 py-2">[]</td>
+              <td class="px-4 py-2">IDs of initially open items</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Source -->
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import Accordion from "@pediment/components/Accordion";
+
+const items = [
+  { id: "1", title: "First Item", content: "Content for the first item" },
+  { id: "2", title: "Second Item", content: "Content for the second item" },
+];
+
+<Accordion items={items} multiple />`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

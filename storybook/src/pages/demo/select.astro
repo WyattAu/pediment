@@ -1,0 +1,35 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import SelectDemo from '../../components/select';
+---
+
+<StoryLayout title="Select" description="Dropdown selection inputs">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Select</h1>
+    <p class="text-[var(--text-secondary)]">Dropdown selection with search, grouping, and multi-select.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <SelectDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import Select from "@pediment-components/Select";
+
+const options = [
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+  { value: "solid", label: "Solid" },
+];
+
+<Select options={options} placeholder="Pick a framework" searchable />
+<Select options={options} multiple />`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

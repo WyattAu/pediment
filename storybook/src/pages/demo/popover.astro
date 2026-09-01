@@ -1,0 +1,30 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import PopoverDemo from '../../components/popover';
+---
+
+<StoryLayout title="Popover" description="Floating content panels">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Popover</h1>
+    <p class="text-[var(--text-secondary)]">Floating content panels triggered by clicks.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <PopoverDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import Popover from "@pediment-components/Popover";
+
+<Popover trigger={<button>Toggle</button>} position="bottom">
+  <p>Popover content</p>
+</Popover>`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

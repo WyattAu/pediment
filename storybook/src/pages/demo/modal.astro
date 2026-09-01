@@ -1,0 +1,39 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import ModalDemo from '../../components/modal';
+---
+
+<StoryLayout title="Modal" description="Dialog overlays and confirmations">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Modal</h1>
+    <p class="text-[var(--text-secondary)]">Dialog overlays and confirmation modals.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <ModalDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import { Modal, ConfirmModal } from "@pediment-components/Modal";
+
+<Modal open={open} onClose={() => setOpen(false)} title="My Modal">
+  <p>Modal content here</p>
+</Modal>
+
+<ConfirmModal
+  open={confirmOpen}
+  title="Delete item?"
+  message="This action cannot be undone"
+  variant="danger"
+  onConfirm={() => { }}
+  onCancel={() => setConfirmOpen(false)}
+/>`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

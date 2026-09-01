@@ -1,0 +1,33 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import CommandPaletteDemo from '../../components/command-palette';
+---
+
+<StoryLayout title="Command Palette" description="Keyboard-driven command interface">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Command Palette</h1>
+    <p class="text-[var(--text-secondary)]">Keyboard-driven command interface for quick actions.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <CommandPaletteDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import CommandPalette from "@pediment-components/CommandPalette";
+
+const items = [
+  { id: "1", label: "New File", icon: "📄", action: () => {} },
+  { id: "2", label: "Save", icon: "💾", shortcut: "Ctrl+S", action: () => {} },
+];
+
+<CommandPalette open={open} onClose={() => setOpen(false)} items={items} />`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

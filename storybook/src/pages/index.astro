@@ -1,0 +1,47 @@
+---
+import StoryLayout from '../layouts/StoryLayout.astro';
+
+const components = [
+  { name: 'Accordion', description: 'Collapsible content sections', href: '/demo/accordion', icon: '▸' },
+  { name: 'Avatar', description: 'User avatars with fallback initials', href: '/demo/avatar', icon: '●' },
+  { name: 'Badge', description: 'Status indicators and labels', href: '/demo/badge', icon: '◆' },
+  { name: 'Command Palette', description: 'Keyboard-driven command interface', href: '/demo/command-palette', icon: '⌘' },
+  { name: 'Data Table', description: 'Sortable, searchable data grids', href: '/demo/data-table', icon: '▦' },
+  { name: 'Date Picker', description: 'Calendar date selection', href: '/demo/date-picker', icon: '📅' },
+  { name: 'File Upload', description: 'Drag-and-drop file uploads', href: '/demo/file-upload', icon: '📁' },
+  { name: 'Form Field', description: 'Validated form inputs', href: '/demo/form-field', icon: '✎' },
+  { name: 'Modal', description: 'Dialog overlays and confirmations', href: '/demo/modal', icon: '◻' },
+  { name: 'Pagination', description: 'Page navigation controls', href: '/demo/pagination', icon: '…' },
+  { name: 'Popover', description: 'Floating content panels', href: '/demo/popover', icon: '▹' },
+  { name: 'Select', description: 'Dropdown selection inputs', href: '/demo/select', icon: '▾' },
+  { name: 'Skeleton', description: 'Loading placeholder animations', href: '/demo/skeleton', icon: '░' },
+  { name: 'Tabs', description: 'Tabbed content navigation', href: '/demo/tabs', icon: '≡' },
+  { name: 'Toast', description: 'Notification messages', href: '/demo/toast', icon: 'ℹ' },
+  { name: 'Tooltip', description: 'Hover context hints', href: '/demo/tooltip', icon: '💬' },
+];
+---
+
+<StoryLayout title="Home" description="Interactive demos for all Pediment components">
+  <div class="mb-12">
+    <h1 class="text-4xl font-bold mb-4">Pediment Storybook</h1>
+    <p class="text-lg text-[var(--text-secondary)] max-w-2xl">
+      Explore all Pediment components with live, interactive examples. Each demo includes controls,
+      multiple variants, source code, and links to documentation.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    {components.map((c) => (
+      <a
+        href={c.href}
+        class="group block rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-4 no-underline transition-all hover:border-[var(--accent)] hover:shadow-[var(--shadow-elevation-2)]"
+      >
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-xl text-[var(--accent)]">{c.icon}</span>
+          <span class="font-semibold text-[var(--text-primary)]">{c.name}</span>
+        </div>
+        <p class="text-sm text-[var(--text-secondary)]">{c.description}</p>
+      </a>
+    ))}
+  </div>
+</StoryLayout>

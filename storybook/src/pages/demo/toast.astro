@@ -1,0 +1,35 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import ToastDemo from '../../components/toast';
+---
+
+<StoryLayout title="Toast" description="Notification messages">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Toast</h1>
+    <p class="text-[var(--text-secondary)]">Notification messages that appear and auto-dismiss.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <ToastDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import { showToast, ToastContainer } from "@pediment-components/Toast";
+
+// In your app root:
+<ToastContainer />
+
+// Trigger toasts:
+showToast.success("Saved!", "Your changes were saved successfully");
+showToast.error("Error", "Something went wrong");
+showToast.warning("Warning", "Please check your input");
+showToast.info("Info", "New update available");`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>

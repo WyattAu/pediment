@@ -1,0 +1,30 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import TooltipDemo from '../../components/tooltip';
+---
+
+<StoryLayout title="Tooltip" description="Hover context hints">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">Tooltip</h1>
+    <p class="text-[var(--text-secondary)]">Hover context hints with configurable positioning.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <TooltipDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import Tooltip from "@pediment-components/Tooltip";
+
+<Tooltip content="Helpful hint" position="top">
+  <button>Hover me</button>
+</Tooltip>`}</code></pre>
+    </section>
+  </div>
+</StoryLayout>
