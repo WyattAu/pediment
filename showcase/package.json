@@ -1,0 +1,21 @@
+{
+  "name": "pediment-showcase",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "@astrojs/solidjs": "^5.0.0",
+    "solid-js": "^1.9.0",
+    "pediment-tokens": "workspace:*",
+    "pediment-components": "workspace:*",
+    "pediment-hooks": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  }
+}

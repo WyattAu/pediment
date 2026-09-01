@@ -1,0 +1,312 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Design Tokens">
+  <!-- Hero -->
+  <section class="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
+    <div class="mx-auto max-w-[var(--max-width)] px-4 py-16 text-center">
+      <h1 class="text-4xl font-bold text-[var(--text-primary)]">Design Tokens</h1>
+      <p class="mt-4 text-lg text-[var(--text-secondary)]">
+        Visual design atoms of the system. Specific, reusable values that maintain consistency across your application.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-[var(--max-width)] px-4 py-12 space-y-16">
+
+    <!-- Colors -->
+    <section id="colors">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Colors</h2>
+
+      <!-- Theme Colors -->
+      <div class="mb-8">
+        <h3 class="mb-4 text-lg font-semibold text-[var(--text-primary)]">Theme Colors</h3>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+            <div class="h-16 bg-[var(--bg-primary)]"></div>
+            <div class="p-3">
+              <p class="text-sm font-medium text-[var(--text-primary)]">--bg-primary</p>
+              <p class="text-xs text-[var(--text-secondary)]">Main background</p>
+            </div>
+          </div>
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+            <div class="h-16 bg-[var(--bg-secondary)]"></div>
+            <div class="p-3">
+              <p class="text-sm font-medium text-[var(--text-primary)]">--bg-secondary</p>
+              <p class="text-xs text-[var(--text-secondary)]">Subtle background</p>
+            </div>
+          </div>
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+            <div class="h-16 bg-[var(--bg-card)]"></div>
+            <div class="p-3">
+              <p class="text-sm font-medium text-[var(--text-primary)]">--bg-card</p>
+              <p class="text-xs text-[var(--text-secondary)]">Card background</p>
+            </div>
+          </div>
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+            <div class="h-16" style="background: var(--accent);"></div>
+            <div class="p-3">
+              <p class="text-sm font-medium text-[var(--text-primary)]">--accent</p>
+              <p class="text-xs text-[var(--text-secondary)]">Primary accent</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Semantic Colors -->
+      <div>
+        <h3 class="mb-4 text-lg font-semibold text-[var(--text-primary)]">Semantic Colors</h3>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+            <div class="h-12 bg-green-500"></div>
+            <div class="p-3">
+              <p class="text-sm font-medium text-[var(--text-primary)]">Success</p>
+              <p class="text-xs text-[var(--text-secondary)]">Positive actions, confirmations</p>
+            </div>
+          </div>
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+            <div class="h-12 bg-yellow-500"></div>
+            <div class="p-3">
+              <p class="text-sm font-medium text-[var(--text-primary)]">Warning</p>
+              <p class="text-xs text-[var(--text-secondary)]">Caution states, alerts</p>
+            </div>
+          </div>
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+            <div class="h-12 bg-red-500"></div>
+            <div class="p-3">
+              <p class="text-sm font-medium text-[var(--text-primary)]">Error</p>
+              <p class="text-xs text-[var(--text-secondary)]">Error states, destructive actions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spacing -->
+    <section id="spacing">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Spacing</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <div class="space-y-3">
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-1</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 4px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">4px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-2</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 8px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">8px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-3</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 12px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">12px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-4</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 16px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">16px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-6</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 24px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">24px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-8</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 32px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">32px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-10</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 40px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">40px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-12</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 48px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">48px</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <code class="w-24 text-xs">--space-16</code>
+            <div class="h-3 rounded bg-[var(--accent)]" style="width: 64px;"></div>
+            <span class="text-xs text-[var(--text-secondary)]">64px</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section id="typography">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Typography</h2>
+
+      <!-- Font Sizes -->
+      <div class="mb-8">
+        <h3 class="mb-4 text-lg font-semibold text-[var(--text-primary)]">Font Sizes</h3>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6 space-y-4">
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-xs</code>
+            <p class="text-xs text-[var(--text-primary)]">The quick brown fox jumps over the lazy dog</p>
+          </div>
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-sm</code>
+            <p class="text-sm text-[var(--text-primary)]">The quick brown fox jumps over the lazy dog</p>
+          </div>
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-base</code>
+            <p class="text-base text-[var(--text-primary)]">The quick brown fox jumps over the lazy dog</p>
+          </div>
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-lg</code>
+            <p class="text-lg text-[var(--text-primary)]">The quick brown fox jumps over the lazy dog</p>
+          </div>
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-xl</code>
+            <p class="text-xl text-[var(--text-primary)]">The quick brown fox jumps over the lazy dog</p>
+          </div>
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-2xl</code>
+            <p class="text-2xl text-[var(--text-primary)]">The quick brown fox jumps over the lazy dog</p>
+          </div>
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-3xl</code>
+            <p class="text-3xl text-[var(--text-primary)]">The quick brown fox</p>
+          </div>
+          <div>
+            <code class="text-xs text-[var(--text-secondary)]">--text-4xl</code>
+            <p class="text-4xl text-[var(--text-primary)]">The quick brown fox</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Font Families -->
+      <div class="mb-8">
+        <h3 class="mb-4 text-lg font-semibold text-[var(--text-primary)]">Font Families</h3>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+            <p class="text-xs text-[var(--text-secondary)] mb-2">--font-body</p>
+            <p style="font-family: var(--font-body);" class="text-lg text-[var(--text-primary)]">Inter</p>
+            <p style="font-family: var(--font-body);" class="text-sm text-[var(--text-secondary)]">AaBbCc 123 !@#</p>
+          </div>
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+            <p class="text-xs text-[var(--text-secondary)] mb-2">--font-mono</p>
+            <p style="font-family: var(--font-mono);" class="text-lg text-[var(--text-primary)]">JetBrains Mono</p>
+            <p style="font-family: var(--font-mono);" class="text-sm text-[var(--text-secondary)]">AaBbCc 123 !@#</p>
+          </div>
+          <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+            <p class="text-xs text-[var(--text-secondary)] mb-2">--font-display</p>
+            <p style="font-family: var(--font-display);" class="text-lg text-[var(--text-primary)]">Inter Display</p>
+            <p style="font-family: var(--font-display);" class="text-sm text-[var(--text-secondary)]">AaBbCc 123 !@#</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Border Radius -->
+    <section id="border-radius">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Border Radius</h2>
+      <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center">
+          <div class="mx-auto mb-3 h-12 w-12 border-2 border-[var(--accent)]" style="border-radius: var(--radius-xs);"></div>
+          <code class="text-xs">--radius-xs</code>
+          <p class="text-xs text-[var(--text-secondary)]">6px</p>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center">
+          <div class="mx-auto mb-3 h-12 w-12 border-2 border-[var(--accent)]" style="border-radius: var(--radius-sm);"></div>
+          <code class="text-xs">--radius-sm</code>
+          <p class="text-xs text-[var(--text-secondary)]">8px</p>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center">
+          <div class="mx-auto mb-3 h-12 w-12 border-2 border-[var(--accent)]" style="border-radius: var(--radius-md);"></div>
+          <code class="text-xs">--radius-md</code>
+          <p class="text-xs text-[var(--text-secondary)]">12px</p>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center">
+          <div class="mx-auto mb-3 h-12 w-12 border-2 border-[var(--accent)]" style="border-radius: var(--radius-lg);"></div>
+          <code class="text-xs">--radius-lg</code>
+          <p class="text-xs text-[var(--text-secondary)]">24px</p>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center">
+          <div class="mx-auto mb-3 h-12 w-12 border-2 border-[var(--accent)]" style="border-radius: var(--radius-pill);"></div>
+          <code class="text-xs">--radius-pill</code>
+          <p class="text-xs text-[var(--text-secondary)]">999px</p>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-4 text-center">
+          <div class="mx-auto mb-3 h-12 w-12 border-2 border-[var(--accent)]" style="border-radius: var(--radius-organic);"></div>
+          <code class="text-xs">--radius-organic</code>
+          <p class="text-xs text-[var(--text-secondary)]">Blob</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shadows / Elevation -->
+    <section id="elevation">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Elevation</h2>
+      <div class="grid gap-6 sm:grid-cols-3 lg:grid-cols-6">
+        <div class="rounded-[var(--radius-md)] bg-[var(--bg-card)] p-4 text-center" style="box-shadow: var(--shadow-elevation-0);">
+          <code class="text-xs">elevation-0</code>
+        </div>
+        <div class="rounded-[var(--radius-md)] bg-[var(--bg-card)] p-4 text-center" style="box-shadow: var(--shadow-elevation-1);">
+          <code class="text-xs">elevation-1</code>
+        </div>
+        <div class="rounded-[var(--radius-md)] bg-[var(--bg-card)] p-4 text-center" style="box-shadow: var(--shadow-elevation-2);">
+          <code class="text-xs">elevation-2</code>
+        </div>
+        <div class="rounded-[var(--radius-md)] bg-[var(--bg-card)] p-4 text-center" style="box-shadow: var(--shadow-elevation-3);">
+          <code class="text-xs">elevation-3</code>
+        </div>
+        <div class="rounded-[var(--radius-md)] bg-[var(--bg-card)] p-4 text-center" style="box-shadow: var(--shadow-elevation-4);">
+          <code class="text-xs">elevation-4</code>
+        </div>
+        <div class="rounded-[var(--radius-md)] bg-[var(--bg-card)] p-4 text-center" style="box-shadow: var(--shadow-glow);">
+          <code class="text-xs">glow</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- Z-Index -->
+    <section id="z-index">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Z-Index Layers</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
+              <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)]">Token</th>
+              <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)]">Value</th>
+              <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)]">Use Case</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--z-bg</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">0</td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Background elements</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--z-content</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">10</td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Main content</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--z-nav</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">100</td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Navigation bars</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--z-overlay</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">500</td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Overlays, backdrops</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3"><code class="text-xs">--z-modal</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">1000</td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Modals, dialogs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</Layout>

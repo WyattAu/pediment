@@ -1,0 +1,261 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ThemeToggle } from "pediment-components";
+
+const themes = [
+  {
+    id: "midnight-navy",
+    name: "Midnight Navy",
+    description: "Deep dark theme with cyan accent. Default theme.",
+    type: "dark",
+    preview: { bg: "#050505", bgSecondary: "#0a0a0a", text: "#ffffff", accent: "#00e5ff" },
+  },
+  {
+    id: "tokyo-night",
+    name: "Tokyo Night",
+    description: "Muted dark theme inspired by the Tokyo Night color scheme.",
+    type: "dark",
+    preview: { bg: "#1a1b26", bgSecondary: "#1f2335", text: "#c0caf5", accent: "#7aa2f7" },
+  },
+  {
+    id: "solaris",
+    name: "Solaris",
+    description: "GitHub-inspired dark theme with warm orange accent.",
+    type: "dark",
+    preview: { bg: "#0d1117", bgSecondary: "#161b22", text: "#e6edf3", accent: "#f0883e" },
+  },
+  {
+    id: "arctic-dawn",
+    name: "Arctic Dawn",
+    description: "Clean, cool-toned light theme with blue accent.",
+    type: "light",
+    preview: { bg: "#f0f4f8", bgSecondary: "#e2e8f0", text: "#1a202c", accent: "#0055ee" },
+  },
+  {
+    id: "light",
+    name: "Light",
+    description: "Classic light theme with sky blue accent.",
+    type: "light",
+    preview: { bg: "#ffffff", bgSecondary: "#f8fafc", text: "#0f172a", accent: "#0ea5e9" },
+  },
+];
+---
+
+<Layout title="Themes">
+  <!-- Hero -->
+  <section class="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
+    <div class="mx-auto max-w-[var(--max-width)] px-4 py-16 text-center">
+      <h1 class="text-4xl font-bold text-[var(--text-primary)]">Themes</h1>
+      <p class="mt-4 text-lg text-[var(--text-secondary)]">
+        Five built-in themes with easy customization. Switch themes to see the entire showcase update instantly.
+      </p>
+      <div class="mt-8 flex justify-center gap-4">
+        <ThemeToggle client:load />
+      </div>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-[var(--max-width)] px-4 py-12 space-y-16">
+
+    <!-- Theme Gallery -->
+    <section id="gallery">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Available Themes</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {themes.map((t) => (
+          <div
+            class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden transition-shadow hover:shadow-[var(--shadow-elevation-2)]"
+            data-theme={t.id}
+          >
+            <div class="h-24 flex items-end px-4 pb-3 space-x-2">
+              <div
+                class="h-8 w-8 rounded-full border border-white/20"
+                style={`background: ${t.preview.bg};`}
+              ></div>
+              <div
+                class="h-8 w-8 rounded-full border border-white/20"
+                style={`background: ${t.preview.bgSecondary};`}
+              ></div>
+              <div
+                class="h-8 w-8 rounded-full border border-white/20"
+                style={`background: ${t.preview.accent};`}
+              ></div>
+            </div>
+            <div class="p-4 bg-[var(--bg-card)]">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-semibold text-[var(--text-primary)]">{t.name}</h3>
+                <span class="rounded-full border px-2 py-0.5 text-xs font-medium text-[var(--text-secondary)] border-[var(--border)]">
+                  {t.type}
+                </span>
+              </div>
+              <p class="mt-1 text-xs text-[var(--text-secondary)]">{t.description}</p>
+              <code class="mt-2 inline-block text-xs text-[var(--accent)]">data-theme="{t.id}"</code>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- How Theming Works -->
+    <section id="how-it-works">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">How Theming Works</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <p class="mb-4 text-[var(--text-secondary)]">
+          Pediment uses CSS custom properties for theming. All components reference these variables, allowing you to override the entire design system by changing a few values.
+        </p>
+        <pre><code>/* themes/my-brand.css */
+[data-theme="my-brand"] {{
+  --bg-primary: #f0fdf4;
+  --bg-secondary: #dcfce7;
+  --bg-card: #ffffff;
+  --text-primary: #14532d;
+  --text-secondary: #166534;
+  --accent: #22c55e;
+  --accent-warm: #f97316;
+  --border: #bbf7d0;
+}}</code></pre>
+      </div>
+    </section>
+
+    <!-- Custom Theme Creation -->
+    <section id="custom-theme">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Creating a Custom Theme</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+          <h3 class="mb-3 text-lg font-semibold text-[var(--text-primary)]">Step 1: Define Your Colors</h3>
+          <p class="mb-3 text-sm text-[var(--text-secondary)]">
+            Create a CSS file with your theme's color overrides.
+          </p>
+          <pre><code>/* themes/my-brand.css */
+[data-theme="my-brand"] {{
+  --bg-primary: #fafafa;
+  --bg-secondary: #f4f4f5;
+  --bg-card: #ffffff;
+  --text-primary: #18181b;
+  --text-secondary: #71717a;
+  --accent: #6d28d9;
+  --accent-warm: #ea580c;
+  --border: #e4e4e7;
+}}</code></pre>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+          <h3 class="mb-3 text-lg font-semibold text-[var(--text-primary)]">Step 2: Apply the Theme</h3>
+          <p class="mb-3 text-sm text-[var(--text-secondary)]">
+            Add the theme file to your project and set the <code>data-theme</code> attribute.
+          </p>
+          <pre><code>&lt;html data-theme="my-brand"&gt;
+  &lt;head&gt;
+    &lt;link rel="stylesheet" href="/themes/my-brand.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Your app content --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Token Reference -->
+    <section id="token-reference">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Theme Token Reference</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
+              <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)]">Token</th>
+              <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)]">Description</th>
+              <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)]">Current Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--bg-primary</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Main background color</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--bg-primary);"></span>
+              </td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--bg-secondary</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Subtle background</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--bg-secondary);"></span>
+              </td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--bg-card</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Card/surface background</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--bg-card);"></span>
+              </td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--text-primary</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Primary text color</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--text-primary);"></span>
+              </td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--text-secondary</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Secondary text color</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--text-secondary);"></span>
+              </td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--accent</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Primary accent color</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--accent);"></span>
+              </td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-3"><code class="text-xs">--accent-warm</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Warm accent color</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--accent-warm);"></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="px-4 py-3"><code class="text-xs">--border</code></td>
+              <td class="px-4 py-3 text-[var(--text-secondary)]">Default border color</td>
+              <td class="px-4 py-3">
+                <span class="inline-block h-4 w-4 rounded border border-[var(--border)]" style="background: var(--border);"></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Accessibility -->
+    <section id="accessibility">
+      <h2 class="mb-6 text-2xl font-bold text-[var(--text-primary)]">Accessibility</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <ul class="space-y-3 text-sm text-[var(--text-secondary)]">
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-[var(--accent)]">&#10003;</span>
+            <span>Maintain WCAG 2.1 AA contrast ratios (4.5:1 for normal text)</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-[var(--accent)]">&#10003;</span>
+            <span>Never rely solely on color to convey information</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-[var(--accent)]">&#10003;</span>
+            <span>Test themes with color blindness simulators</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-[var(--accent)]">&#10003;</span>
+            <span>Ensure focus indicators are visible in all themes</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-0.5 text-[var(--accent)]">&#10003;</span>
+            <span>Support <code>prefers-reduced-motion</code> for animations</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</Layout>

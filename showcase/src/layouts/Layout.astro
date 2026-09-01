@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+import { ThemeToggle } from "pediment-components";
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Interactive showcase of Pediment design system components, tokens, and themes" } = Astro.props;
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Components", href: "/components" },
+  { label: "Tokens", href: "/tokens" },
+  { label: "Themes", href: "/themes" },
+];
+---
+
+<!doctype html>
+<html lang="en" data-theme="midnight-navy">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - Pediment Showcase</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} - Pediment Showcase`} />
+    <meta property="og:description" content={description} />
+  </head>
+  <body>
+    <nav class="sticky top-0 z-[var(--z-nav)] border-b border-[var(--border)] bg-[var(--bg-primary)]/80 backdrop-blur-sm">
+      <div class="mx-auto flex max-w-[var(--max-width)] items-center justify-between px-4 py-3">
+        <a href="/" class="text-lg font-bold text-[var(--text-primary)]">Pediment</a>
+        <div class="flex items-center gap-4">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class:list={[
+                "text-sm transition-colors",
+                Astro.url.pathname === link.href
+                  ? "text-[var(--accent)] font-medium"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]",
+              ]}
+            >
+              {link.label}
+            </a>
+          ))}
+          <ThemeToggle client:load />
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-[var(--border)] bg-[var(--bg-secondary)]">
+      <div class="mx-auto max-w-[var(--max-width)] px-4 py-8 text-center text-sm text-[var(--text-secondary)]">
+        <p>&copy; {new Date().getFullYear()} Pediment. Built with Astro + SolidJS.</p>
+      </div>
+    </footer>
+  </body>
+</html>

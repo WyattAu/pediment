@@ -1,0 +1,350 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Components">
+  <!-- Hero -->
+  <section class="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
+    <div class="mx-auto max-w-[var(--max-width)] px-4 py-16 text-center">
+      <h1 class="text-4xl font-bold text-[var(--text-primary)]">Components</h1>
+      <p class="mt-4 text-lg text-[var(--text-secondary)]">
+        Interactive demos of all Pediment UI components. Each component is accessible, theme-aware, and built with SolidJS.
+      </p>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-[var(--max-width)] px-4 py-12 space-y-16">
+
+    <!-- Badge -->
+    <section id="badge">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Badge</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Inline labels for status, categories, and counts. Available in multiple variants and sizes.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <p class="mb-3 text-sm font-medium text-[var(--text-secondary)]">Variants</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-[var(--bg-secondary)] text-[var(--text-primary)] border-[var(--border)]">Default</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-800 border-green-200">Success</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 border-yellow-200">Warning</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-red-100 text-red-800 border-red-200">Error</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 border-blue-200">Info</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-transparent border-[var(--border)] text-[var(--text-secondary)]">Outline</span>
+        </div>
+        <p class="mt-4 mb-3 text-sm font-medium text-[var(--text-secondary)]">Sizes</p>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-medium bg-green-100 text-green-800 border-green-200">Small</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-800 border-green-200">Medium</span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-sm font-medium bg-green-100 text-green-800 border-green-200">Large</span>
+        </div>
+        <p class="mt-4 mb-3 text-sm font-medium text-[var(--text-secondary)]">With Dot &amp; Removable</p>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-800 border-green-200">
+            <span class="h-1.5 w-1.5 rounded-full bg-current"></span>
+            Active
+          </span>
+          <span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 border-blue-200">
+            Tag
+            <button class="ml-0.5 hover:opacity-70" aria-label="Remove">&times;</button>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section id="tabs">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Tabs</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Tabbed navigation with three variants: underline, pills, and enclosed.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6 space-y-6">
+        <!-- Underline variant -->
+        <div>
+          <p class="mb-3 text-sm font-medium text-[var(--text-secondary)]">Underline (default)</p>
+          <div class="flex gap-1 border-b border-[var(--border)]">
+            <button class="border-b-2 border-[var(--accent)] px-4 py-2.5 text-sm font-medium text-[var(--accent)]">Overview</button>
+            <button class="px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Settings</button>
+            <button class="px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Integrations</button>
+          </div>
+        </div>
+
+        <!-- Pills variant -->
+        <div>
+          <p class="mb-3 text-sm font-medium text-[var(--text-secondary)]">Pills</p>
+          <div class="flex gap-1">
+            <button class="rounded-[var(--radius-sm)] bg-[var(--accent)] px-4 py-2.5 text-sm font-medium text-white">Overview</button>
+            <button class="rounded-[var(--radius-sm)] px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Settings</button>
+            <button class="rounded-[var(--radius-sm)] px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Integrations</button>
+          </div>
+        </div>
+
+        <!-- Enclosed variant -->
+        <div>
+          <p class="mb-3 text-sm font-medium text-[var(--text-secondary)]">Enclosed</p>
+          <div class="flex gap-1 border-b border-[var(--border)]">
+            <button class="border border-b-0 border-[var(--border)] bg-[var(--bg-card)] px-4 py-2.5 text-sm font-medium text-[var(--text-primary)] -mb-px">Overview</button>
+            <button class="px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Settings</button>
+            <button class="px-4 py-2.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)]">Integrations</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <section id="modal">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Modal</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Overlay dialogs for confirmations, forms, and focused interactions. Includes accessible focus trapping and Escape key dismissal.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <p class="mb-3 text-sm font-medium text-[var(--text-secondary)]">Modal Preview (static)</p>
+        <div class="flex items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-secondary)] p-8">
+          <div class="w-full max-w-lg rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow-elevation-4)]">
+            <div class="flex items-center justify-between border-b border-[var(--border)] px-6 py-4">
+              <h3 class="text-lg font-semibold text-[var(--text-primary)]">Modal Title</h3>
+              <button class="rounded-[var(--radius-sm)] p-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors" aria-label="Close">&times;</button>
+            </div>
+            <div class="px-6 py-4">
+              <p class="text-sm text-[var(--text-secondary)]">This is a modal dialog. It traps focus and can be dismissed with Escape.</p>
+              <div class="mt-4 flex justify-end gap-2">
+                <button class="rounded-[var(--radius-sm)] border border-[var(--border)] px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">Cancel</button>
+                <button class="rounded-[var(--radius-sm)] bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90">Confirm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accordion -->
+    <section id="accordion">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Accordion</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Collapsible content sections for FAQs, settings panels, and more.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <div class="divide-y divide-[var(--border)] rounded-[var(--radius-md)] border border-[var(--border)]">
+          <div>
+            <button class="flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-left hover:bg-[var(--bg-secondary)] cursor-pointer">
+              <span class="flex items-center gap-2 text-[var(--text-primary)]">What is Pediment?</span>
+              <span class="text-[var(--text-secondary)] transition-transform rotate-180">&#9662;</span>
+            </button>
+            <div class="px-4 pb-4 text-sm text-[var(--text-secondary)]">
+              Pediment is a comprehensive design system for building modern web applications with Astro, SolidJS, and Cloudflare.
+            </div>
+          </div>
+          <div>
+            <button class="flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-left hover:bg-[var(--bg-secondary)] cursor-pointer">
+              <span class="flex items-center gap-2 text-[var(--text-primary)]">How do I install it?</span>
+              <span class="text-[var(--text-secondary)] transition-transform">&#9662;</span>
+            </button>
+          </div>
+          <div>
+            <button class="flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-left hover:bg-[var(--bg-secondary)] cursor-pointer">
+              <span class="flex items-center gap-2 text-[var(--text-primary)]">Can I use it without SolidJS?</span>
+              <span class="text-[var(--text-secondary)] transition-transform">&#9662;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Select -->
+    <section id="select">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Select</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Custom select dropdown with search, grouping, and multi-select support.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6 space-y-6">
+        <div>
+          <p class="mb-2 text-sm font-medium text-[var(--text-primary)]">Single Select</p>
+          <div class="relative">
+            <button type="button" class="flex w-full items-center justify-between rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-card)] px-3 py-2 text-sm text-left transition-colors cursor-pointer">
+              <span class="text-[var(--text-secondary)]">Choose an option...</span>
+              <span class="ml-2 text-[var(--text-secondary)]">&#9662;</span>
+            </button>
+          </div>
+        </div>
+        <div>
+          <p class="mb-2 text-sm font-medium text-[var(--text-primary)]">Multi Select</p>
+          <div class="relative">
+            <button type="button" class="flex w-full items-center justify-between rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-card)] px-3 py-2 text-sm text-left transition-colors cursor-pointer">
+              <span class="text-[var(--text-secondary)]">Select multiple...</span>
+              <span class="ml-2 text-[var(--text-secondary)]">&#9662;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tooltip -->
+    <section id="tooltip">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Tooltip</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Contextual hints on hover with configurable positioning and delay.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <p class="mb-3 text-sm font-medium text-[var(--text-secondary)]">Hover over the buttons</p>
+        <div class="flex gap-4">
+          <div class="relative group">
+            <button class="rounded-[var(--radius-sm)] border border-[var(--border)] px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors">Top</button>
+            <div class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover:block whitespace-nowrap rounded-[var(--radius-sm)] bg-[var(--text-primary)] px-2.5 py-1.5 text-xs text-[var(--bg-primary)] shadow-[var(--shadow-elevation-2)] z-50">
+              Tooltip on top
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="rounded-[var(--radius-sm)] border border-[var(--border)] px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors">Bottom</button>
+            <div class="absolute top-full mt-2 left-1/2 -translate-x-1/2 hidden group-hover:block whitespace-nowrap rounded-[var(--radius-sm)] bg-[var(--text-primary)] px-2.5 py-1.5 text-xs text-[var(--bg-primary)] shadow-[var(--shadow-elevation-2)] z-50">
+              Tooltip on bottom
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pagination -->
+    <section id="pagination">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Pagination</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Page navigation with sibling count and first/last buttons.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <nav class="flex items-center gap-1" aria-label="Pagination">
+          <button class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">&laquo;</button>
+          <button class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] disabled:opacity-50" disabled>&lsaquo;</button>
+          <button class="rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium bg-[var(--accent)] text-white">1</button>
+          <button class="rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]">2</button>
+          <button class="rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]">3</button>
+          <span class="px-1 py-1.5 text-sm text-[var(--text-secondary)]">&hellip;</span>
+          <button class="rounded-[var(--radius-sm)] px-3 py-1.5 text-sm font-medium text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)]">10</button>
+          <button class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">&rsaquo;</button>
+          <button class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]">&raquo;</button>
+        </nav>
+      </div>
+    </section>
+
+    <!-- FormField -->
+    <section id="form-field">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">FormField</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Labeled input fields with validation, help text, and error states.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6 space-y-4 max-w-md">
+        <div class="flex flex-col gap-1.5">
+          <label for="demo-name" class="text-sm font-medium text-[var(--text-primary)]">
+            Full Name <span class="text-red-500 ml-0.5">*</span>
+          </label>
+          <input
+            id="demo-name"
+            type="text"
+            placeholder="Jane Doe"
+            class="rounded-[var(--radius-sm)] border border-[var(--border)] px-3 py-2 text-sm bg-[var(--bg-card)] text-[var(--text-primary)] transition-colors focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/20 focus:outline-none"
+          />
+          <p class="text-xs text-[var(--text-secondary)]">Enter your full name.</p>
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="demo-email" class="text-sm font-medium text-[var(--text-primary)]">Email</label>
+          <input
+            id="demo-email"
+            type="email"
+            placeholder="jane@example.com"
+            class="rounded-[var(--radius-sm)] border border-red-500 px-3 py-2 text-sm bg-[var(--bg-card)] text-[var(--text-primary)] transition-colors focus:border-red-500 focus:ring-2 focus:ring-red-500/20 focus:outline-none"
+          />
+          <p class="text-xs text-red-500">Please enter a valid email address.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DataTable -->
+    <section id="data-table">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">DataTable</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Sortable, searchable data tables with pagination support.
+      </p>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+        <div class="p-3 border-b border-[var(--border)]">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-card)] px-3 py-2 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)]"
+          />
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-[var(--border)] bg-[var(--bg-secondary)]">
+                <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)] cursor-pointer hover:text-[var(--text-primary)]">Name &#9650;</th>
+                <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)] cursor-pointer hover:text-[var(--text-primary)]">Role</th>
+                <th class="px-4 py-3 text-left font-medium text-[var(--text-secondary)] cursor-pointer hover:text-[var(--text-primary)]">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-[var(--border)] hover:bg-[var(--bg-secondary)]">
+                <td class="px-4 py-3">Alice Chen</td>
+                <td class="px-4 py-3">Engineer</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-green-100 text-green-800 border-green-200">Active</span></td>
+              </tr>
+              <tr class="border-b border-[var(--border)] hover:bg-[var(--bg-secondary)]">
+                <td class="px-4 py-3">Bob Martinez</td>
+                <td class="px-4 py-3">Designer</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-blue-100 text-blue-800 border-blue-200">Online</span></td>
+              </tr>
+              <tr class="border-b border-[var(--border)] hover:bg-[var(--bg-secondary)]">
+                <td class="px-4 py-3">Carol Davis</td>
+                <td class="px-4 py-3">Manager</td>
+                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 border-yellow-200">Away</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex items-center justify-between border-t border-[var(--border)] px-4 py-3">
+          <span class="text-sm text-[var(--text-secondary)]">Page 1 of 1 (3 items)</span>
+          <div class="flex gap-2">
+            <button class="rounded-[var(--radius-sm)] border border-[var(--border)] px-3 py-1 text-sm disabled:opacity-50" disabled>Previous</button>
+            <button class="rounded-[var(--radius-sm)] border border-[var(--border)] px-3 py-1 text-sm disabled:opacity-50" disabled>Next</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hooks Section -->
+    <section id="hooks">
+      <h2 class="mb-4 text-2xl font-bold text-[var(--text-primary)]">Hooks</h2>
+      <p class="mb-6 text-[var(--text-secondary)]">
+        Reusable SolidJS hooks for common patterns.
+      </p>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+          <h3 class="mb-2 text-lg font-semibold text-[var(--text-primary)]">useTheme</h3>
+          <p class="mb-3 text-sm text-[var(--text-secondary)]">
+            Get and set the current theme with localStorage persistence.
+          </p>
+          <pre><code>const { theme, set, cycle } = useTheme();
+set("tokyo-night");</code></pre>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+          <h3 class="mb-2 text-lg font-semibold text-[var(--text-primary)]">useMediaQuery</h3>
+          <p class="mb-3 text-sm text-[var(--text-secondary)]">
+            Reactively match CSS media queries.
+          </p>
+          <pre><code>const isMobile = useMediaQuery("(max-width: 640px)");</code></pre>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+          <h3 class="mb-2 text-lg font-semibold text-[var(--text-primary)]">useLocalStorage</h3>
+          <p class="mb-3 text-sm text-[var(--text-secondary)]">
+            Persist signals to localStorage with automatic JSON serialization.
+          </p>
+          <pre><code>const [count, setCount] = useLocalStorage("count", 0);</code></pre>
+        </div>
+        <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+          <h3 class="mb-2 text-lg font-semibold text-[var(--text-primary)]">useReducedMotion</h3>
+          <p class="mb-3 text-sm text-[var(--text-secondary)]">
+            Detect user preference for reduced motion.
+          </p>
+          <pre><code>const prefersReduced = useReducedMotion();</code></pre>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Layout>

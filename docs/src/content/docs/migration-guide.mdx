@@ -1,0 +1,571 @@
+---
+title: Migration Guide
+description: Step-by-step guides for migrating to Pediment from other frameworks and tools
+---
+
+import { Tabs, TabPanel } from "pediment-components";
+import Badge from "pediment-components/Badge";
+
+This guide covers migrating existing projects to Pediment from various starting points. Choose the section that matches your current setup.
+
+## Overview
+
+Pediment is designed to be adopted incrementally. You can start with just design tokens, add components later, and eventually migrate your entire stack. This guide walks you through each migration path with practical, step-by-step instructions.
+
+---
+
+## Migrating from Vanilla Astro
+
+If you have a plain Astro project with custom CSS or inline styles, migrating to Pediment means adopting the design token system and optionally adding components.
+
+### Step 1: Install Pediment Packages
+
+```bash
+# Add design tokens (required)
+bun add pediment-tokens
+
+# Add components (optional, for UI components)
+bun add pediment-components
+
+# Add hooks (optional, for SolidJS reactivity)
+bun add pediment-hooks
+
+# Add Starlight plugin (optional, for docs sites)
+bun add pediment-starlight
+```
+
+### Step 2: Add Pediment Theme Toggle
+
+Update your layout's `<html>` tag to support theming:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<!doctype html>
+<html lang="en" data-theme="midnight-navy">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{Astro.props.title}</title>
+  </head>
+  <body class="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
+    <slot />
+  </body>
+</html>
+```
+
+### Step 3: Import Pediment Styles
+
+Add the Pediment token imports to your global stylesheet:
+
+```css
+/* src/styles/global.css */
+@import "pediment-tokens";
+```
+
+Then import this in your layout:
+
+```astro
+---
+// src/layouts/Layout.astro
+import "../styles/global.css";
+---
+```
+
+### Step 4: Replace Custom CSS with Token References
+
+Replace hardcoded values with Pediment tokens:
+
+**Before:**
+```css
+.card {
+  background: #ffffff;
+  color: #1f2937;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+```
+
+**After:**
+```css
+.card {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-elevation-2);
+}
+```
+
+### Step 5: Replace Custom Components (Optional)
+
+Replace hand-rolled components with Pediment components:
+
+**Before:**
+```astro
+<!-- Custom button -->
+<button class="btn">Click me</button>
+
+<style>
+  .btn {
+    background: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover { background: #2563eb; }
+</style>
+```
+
+**After:**
+```tsx
+// Use Pediment's design tokens for consistent styling
+<button
+  class="rounded-[var(--radius-sm)] bg-[var(--accent)] px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-90"
+>
+  Click me
+</button>
+```
+
+### Step 6: Add SolidJS Integration (Optional)
+
+If you want to use Pediment's interactive components, add SolidJS support:
+
+```bash
+bun add @astrojs/solidjs solid-js
+```
+
+```typescript
+// astro.config.ts
+import { defineConfig } from "astro/config";
+import solid from "@astrojs/solidjs";
+
+export default defineConfig({
+  integrations: [solid()],
+});
+```
+
+Now you can use SolidJS components in your Astro pages:
+
+```astro
+---
+// src/pages/index.astro
+import { ThemeToggle } from "pediment-components";
+---
+
+<h1>Welcome</h1>
+<ThemeToggle client:load />
+```
+
+---
+
+## Migrating from Tailwind CSS
+
+If your project uses Tailwind CSS, you can migrate to Pediment's token system while keeping a similar development experience.
+
+### Step 1: Understand the Mapping
+
+| Tailwind | Pediment Token |
+|----------|---------------|
+| `bg-white` | `bg-[var(--bg-primary)]` |
+| `bg-gray-50` | `bg-[var(--bg-secondary)]` |
+| `bg-gray-100` | `bg-[var(--bg-card)]` |
+| `text-gray-900` | `text-[var(--text-primary)]` |
+| `text-gray-500` | `text-[var(--text-secondary)]` |
+| `border-gray-200` | `border-[var(--border)]` |
+| `text-blue-500` | `text-[var(--accent)]` |
+| `rounded-md` | `rounded-[var(--radius-md)]` |
+| `p-4` | `p-[var(--space-4)]` |
+| `shadow-md` | `shadow-[var(--shadow-elevation-2)]` |
+
+### Step 2: Install Pediment Tokens
+
+```bash
+bun add pediment-tokens
+```
+
+### Step 3: Import Tokens
+
+```css
+@import "pediment-tokens";
+```
+
+### Step 4: Replace Tailwind Utilities
+
+Systematically replace Tailwind utilities with Pediment token references. Start with colors, then spacing, then border radius and shadows.
+
+**Before (Tailwind):**
+```html
+<div class="bg-white text-gray-900 p-6 rounded-lg shadow-md border border-gray-200">
+  <h2 class="text-xl font-bold text-gray-900 mb-2">Card Title</h2>
+  <p class="text-gray-500 text-sm">Card description</p>
+  <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+    Action
+  </button>
+</div>
+```
+
+**After (Pediment tokens):**
+```html
+<div class="bg-[var(--bg-card)] text-[var(--text-primary)] p-6 rounded-[var(--radius-md)] shadow-[var(--shadow-elevation-2)] border border-[var(--border)]">
+  <h2 class="text-xl font-bold text-[var(--text-primary)] mb-2">Card Title</h2>
+  <p class="text-[var(--text-secondary)] text-sm">Card description</p>
+  <button class="bg-[var(--accent)] text-white px-4 py-2 rounded-[var(--radius-sm)] hover:opacity-90">
+    Action
+  </button>
+</div>
+```
+
+### Step 5: Remove Tailwind Configuration
+
+Once all classes are migrated, remove Tailwind from your project:
+
+```bash
+bun remove tailwindcss @tailwindcss/vite
+```
+
+Remove the Tailwind integration from your Astro config:
+
+```diff
+// astro.config.ts
+import { defineConfig } from "astro/config";
+-import tailwind from "@tailwindcss/vite";
+
+export default defineConfig({
+-  vite: {
+-    plugins: [tailwind()],
+-  },
+});
+```
+
+### Step 6: Remove Tailwind Directives
+
+Remove Tailwind directives from your CSS:
+
+```diff
+-@import "tailwindcss";
++@import "pediment-tokens";
+```
+
+### Step 7: Clean Up package.json
+
+Remove Tailwind-related packages:
+
+```bash
+bun remove tailwindcss @tailwindcss/vite
+```
+
+---
+
+## Migrating from shadcn/ui
+
+If you have a project using shadcn/ui components, you can replace them with Pediment's component library.
+
+### Step 1: Understand the Component Mapping
+
+| shadcn/ui | Pediment |
+|-----------|----------|
+| `Button` | Use styled `<button>` with tokens |
+| `Card` | Use styled `<div>` with tokens |
+| `Dialog` | `Modal`, `ConfirmModal` |
+| `Select` | `Select` |
+| `Tabs` | `Tabs`, `TabPanel` |
+| `Toast` | `showToast`, `ToastContainer` |
+| `Badge` | `Badge` |
+| `Accordion` | `Accordion` |
+| `Tooltip` | `Tooltip` |
+| `Pagination` | `Pagination` |
+| `Input` + `Label` | `FormField` |
+
+### Step 2: Install Pediment Packages
+
+```bash
+bun add pediment-components pediment-tokens
+```
+
+### Step 3: Replace Components
+
+**Before (shadcn/ui Dialog):**
+```tsx
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+<Dialog>
+  <DialogTrigger>Open</DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Confirm Action</DialogTitle>
+      <DialogDescription>
+        Are you sure you want to proceed?
+      </DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+**After (Pediment Modal):**
+```tsx
+import { Modal } from "pediment-components";
+
+const [open, setOpen] = createSignal(false);
+
+<button onClick={() => setOpen(true)}>Open</button>
+<Modal open={open()} onClose={() => setOpen(false)} title="Confirm Action">
+  <p class="text-sm text-[var(--text-secondary)]">
+    Are you sure you want to proceed?
+  </p>
+</Modal>
+```
+
+**Before (shadcn/ui Badge):**
+```tsx
+import { Badge } from "@/components/ui/badge";
+
+<Badge variant="secondary">Draft</Badge>
+```
+
+**After (Pediment Badge):**
+```tsx
+import { Badge } from "pediment-components";
+
+<Badge variant="default">Draft</Badge>
+```
+
+**Before (shadcn/ui Tabs):**
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
+<Tabs defaultValue="account">
+  <TabsList>
+    <TabsTrigger value="account">Account</TabsTrigger>
+    <TabsTrigger value="password">Password</TabsTrigger>
+  </TabsList>
+  <TabsContent value="account">Account settings</TabsContent>
+  <TabsContent value="password">Password settings</TabsContent>
+</Tabs>
+```
+
+**After (Pediment Tabs):**
+```tsx
+import { Tabs, TabPanel } from "pediment-components";
+
+const tabs = [
+  { id: "account", label: "Account" },
+  { id: "password", label: "Password" },
+];
+const [active, setActive] = createSignal("account");
+
+<Tabs tabs={tabs} activeTab={active()} onChange={setActive} />
+<TabPanel tabId="account" activeTab={active()}>Account settings</TabPanel>
+<TabPanel tabId="password" activeTab={active()}>Password settings</TabPanel>
+```
+
+### Step 4: Remove shadcn/ui
+
+After migrating all components:
+
+```bash
+bun remove @radix-ui/react-dialog @radix-ui/react-select @radix-ui/react-tabs
+# Remove other @radix-ui packages as needed
+rm -rf src/components/ui/
+```
+
+---
+
+## Migrating from Radix UI
+
+Radix UI provides headless primitives. Pediment provides styled, accessible components built on SolidJS.
+
+### Step 1: Understand the Architecture Difference
+
+- **Radix UI**: React-based headless primitives with unstyled components
+- **Pediment**: SolidJS-based styled components with design tokens
+
+If you need to keep React, Pediment's design tokens (`pediment-tokens`) can be used without the component library.
+
+### Step 2: Install Pediment Packages
+
+```bash
+bun add pediment-components pediment-tokens
+```
+
+### Step 3: Replace Components
+
+**Before (Radix Dialog):**
+```tsx
+import * as Dialog from "@radix-ui/react-dialog";
+
+<Dialog.Root>
+  <Dialog.Trigger>Open</Dialog.Trigger>
+  <Dialog.Portal>
+    <Dialog.Overlay className="bg-black/50" />
+    <Dialog.Content className="bg-white p-6 rounded-lg">
+      <Dialog.Title>Confirm</Dialog.Title>
+      <Dialog.Description>Are you sure?</Dialog.Description>
+    </Dialog.Content>
+  </Dialog.Portal>
+</Dialog.Root>
+```
+
+**After (Pediment Modal):**
+```tsx
+import { Modal } from "pediment-components";
+
+const [open, setOpen] = createSignal(false);
+
+<button onClick={() => setOpen(true)}>Open</button>
+<Modal open={open()} onClose={() => setOpen(false)} title="Confirm">
+  <p>Are you sure?</p>
+</Modal>
+```
+
+### Step 4: Remove Radix Packages
+
+```bash
+bun remove @radix-ui/react-dialog @radix-ui/react-select @radix-ui/react-tabs
+# etc.
+```
+
+---
+
+## Breaking Changes and Upgrade Paths
+
+### v0.1.x to Current
+
+#### Theme Variable Names
+
+Theme CSS custom properties were renamed for consistency:
+
+| Old | New |
+|-----|-----|
+| `--color-bg` | `--bg-primary` |
+| `--color-bg-secondary` | `--bg-secondary` |
+| `--color-bg-card` | `--bg-card` |
+| `--color-text` | `--text-primary` |
+| `--color-text-muted` | `--text-secondary` |
+| `--color-accent` | `--accent` |
+| `--color-border` | `--border` |
+
+**Migration:**
+```bash
+# Find and replace in your CSS files
+# Old: var(--color-bg) -> New: var(--bg-primary)
+# Old: var(--color-text) -> New: var(--text-primary)
+# etc.
+```
+
+#### Shadow Tokens
+
+Shadow tokens were updated for the Spatial Materialism design system:
+
+| Old | New |
+|-----|-----|
+| `--shadow-sm` | `--shadow-elevation-0` |
+| `--shadow-md` | `--shadow-elevation-2` |
+| `--shadow-lg` | `--shadow-elevation-3` |
+| `--shadow-xl` | `--shadow-elevation-4` |
+
+#### Component API Changes
+
+**DataTable** - Column `render` function now receives the full row object:
+
+```diff
+- render: (item) => item.name
++ render: (item) => item.name
+// No change needed, but type is now `T` instead of `Record<string, any>`
+```
+
+**Select** - The `value` prop is now reactive:
+
+```tsx
+// Before: value was static
+<Select value="option1" />
+
+// After: value is reactive
+const [selected, setSelected] = createSignal("option1");
+<Select value={selected()} onChange={setSelected} />
+```
+
+**Tabs** - Tab list is now data-driven:
+
+```diff
+- <Tabs>
+-   <TabsList>
+-     <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+-   </TabsList>
+- </Tabs>
++ const tabs = [{ id: "tab1", label: "Tab 1" }];
++ <Tabs tabs={tabs} />
+```
+
+---
+
+## Step-by-Step Migration Checklist
+
+Use this checklist to track your migration progress:
+
+### Phase 1: Design Tokens
+- [ ] Install `pediment-tokens`
+- [ ] Add `@import "pediment-tokens"` to global CSS
+- [ ] Replace hardcoded colors with `--bg-*`, `--text-*`, `--accent` tokens
+- [ ] Replace hardcoded spacing with `--space-*` tokens
+- [ ] Replace hardcoded border radius with `--radius-*` tokens
+- [ ] Replace hardcoded shadows with `--shadow-elevation-*` tokens
+- [ ] Test light theme
+- [ ] Test dark theme
+
+### Phase 2: Components
+- [ ] Install `pediment-components`
+- [ ] Add SolidJS integration (if not already present)
+- [ ] Replace modal/dialog components with `Modal` / `ConfirmModal`
+- [ ] Replace tab components with `Tabs` / `TabPanel`
+- [ ] Replace select components with `Select`
+- [ ] Replace badge/tag components with `Badge`
+- [ ] Replace accordion components with `Accordion`
+- [ ] Replace tooltip components with `Tooltip`
+- [ ] Replace pagination components with `Pagination`
+- [ ] Replace form fields with `FormField`
+- [ ] Add toast notifications with `showToast`
+- [ ] Add error boundaries with `ErrorBoundary`
+- [ ] Add theme toggle with `ThemeToggle`
+
+### Phase 3: Hooks & Utilities
+- [ ] Install `pediment-hooks`
+- [ ] Replace custom theme logic with `useTheme`
+- [ ] Replace custom media query hooks with `useMediaQuery`
+- [ ] Replace custom localStorage hooks with `useLocalStorage`
+- [ ] Replace custom reduced motion logic with `useReducedMotion`
+- [ ] Install `pediment-utils`
+- [ ] Replace custom security headers with `securityHeaders()`
+- [ ] Replace custom SEO meta generation with `buildSeoMeta()`
+
+### Phase 4: Cleanup
+- [ ] Remove old CSS framework (Tailwind, etc.)
+- [ ] Remove old component library (shadcn/ui, Radix, etc.)
+- [ ] Remove unused dependencies
+- [ ] Update documentation
+- [ ] Run full test suite
+- [ ] Verify all pages render correctly
+
+---
+
+## Getting Help
+
+If you encounter issues during migration:
+
+- Check the [GitHub Issues](https://github.com/WyattAu/pediment/issues) for known problems
+- Join the [Discord community](https://discord.gg/pediment) for real-time help
+- Review the [Component Documentation](/components/data-table) for API details
+- See the [Design Tokens Reference](/tokens) for available tokens
