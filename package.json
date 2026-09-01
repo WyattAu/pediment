@@ -1,6 +1,6 @@
 {
   "name": "pediment",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "workspaces": ["packages/*", "showcase", "storybook"],
   "description": "Shared design tokens, components, hooks, and utilities for Astro+SolidJS+Starlight+Cloudflare projects",

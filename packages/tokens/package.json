@@ -1,6 +1,6 @@
 {
   "name": "pediment-tokens",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Design tokens for Pediment \u2014 Spatial Materialism, Amoebic UI, themes",
   "type": "module",
   "main": "src/index.css",

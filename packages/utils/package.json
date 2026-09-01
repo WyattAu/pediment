@@ -1,6 +1,6 @@
 {
   "name": "pediment-utils",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Shared utilities for Pediment \u2014 security headers, SEO, analytics",
   "type": "module",
   "main": "src/index.ts",
