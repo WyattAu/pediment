@@ -1,39 +1,69 @@
 # Contributing to Pediment
 
-Thanks for your interest in contributing! Here's how to get started.
+## How to Contribute
 
-## Development
+### Reporting Bugs
+1. Check existing issues first
+2. Include: environment, steps to reproduce, expected vs actual
+3. Add label: `bug`
 
+### Suggesting Enhancements
+1. Use case, proposed solution, alternatives considered
+2. Add label: `enhancement`
+
+### Good First Issues
+Look for issues labeled `good first issue`.
+
+## Development Setup
+
+### Prerequisites
+- Bun 1.3+
+- Node.js 22+ (for npm publish)
+
+### Fork & Clone
 ```bash
+git clone https://github.com/YOUR_USERNAME/pediment.git
+cd pediment
 bun install
-bun run dev
 ```
 
-## Code Style
-
-We use Biome for formatting and linting:
-
+### Running Locally
 ```bash
-bun run check      # check for issues
-bun run format     # auto-fix
+# Tokens package
+cd packages/tokens && ls src/
+
+# Components package
+cd packages/components && ls src/
+
+# Development with a consuming project
+cd ../crawlkit/web && npm run dev
 ```
 
-## Pull Requests
+## Pull Request Process
 
-1. Fork the repo and create a branch from `main`
-2. Make your changes
-3. Run `bun run check` to ensure code quality
-4. Submit a pull request
+1. Create an issue first (for non-trivial changes)
+2. Branch naming: `feat/`, `fix/`, `docs/`
+3. PR checklist:
+   - [ ] Tests pass
+   - [ ] Lint passes
+   - [ ] Documentation updated
+4. Review timeline: expect response within 7 days
 
-## Commit Messages
+## Style Guide
 
-Follow [Conventional Commits](https://www.conventionalcommits.org/):
-- `feat:` new feature
-- `fix:` bug fix
-- `docs:` documentation
-- `refactor:` code restructuring
-- `chore:` maintenance
+### CSS
+- Use pediment design tokens (CSS custom properties)
+- Follow Spatial Materialism + Amoebic UI patterns
+- Use `@layer base, components, utilities` for Tailwind v4
 
-## License
+### TypeScript
+- Strict TypeScript mode
+- Biome for formatting
+- No `any` types
 
-By contributing, you agree that your contributions will be licensed under MIT OR Apache-2.0.
+### Commits
+```
+feat: add new component
+fix: resolve CSS issue in theme toggle
+docs: update token documentation
+```
