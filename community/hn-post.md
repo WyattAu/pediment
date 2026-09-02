@@ -1,46 +1,19 @@
-# Hacker News Post
+Title: "Show HN: Pediment – Open-source UI framework for Astro + SolidJS"
 
-## Show HN: Pediment – Open-source UI framework for Astro + SolidJS
+Body:
 
-Pediment is a production-ready UI framework with 18 accessible SolidJS components, design tokens, and 5 themes.
+Pediment is a production-ready UI framework for building modern web applications with Astro and SolidJS.
 
-**What it does:**
-- 18 components: DataTable, Modal, Select, Toast, Tabs, Accordion, Badge, Avatar, Pagination, Tooltip, Popover, CommandPalette, FileUpload, DatePicker, Skeleton, ErrorBoundary, ThemeToggle, FormField
-- 5 design themes via CSS custom properties (zero JS runtime cost)
-- Full ARIA and keyboard navigation support
-- TypeScript-first with strict typing
-- Works standalone, with Astro, or any SolidJS setup
+What makes it different:
 
-**How to use it:**
+1. **18 accessible components** - DataTable, Modal, Select, Toast, Tabs, Accordion, and more
+2. **5 design themes** - Spatial Materialism, Amoebic UI, Brutalist, Tokyo Night, Arctic Dawn
+3. **TypeScript-first** - Full type support for all components
+4. **Design tokens** - CSS custom properties for easy customization
+5. **Interactive storybook** - 16 demo pages with live examples
 
-```bash
-bun install @pediment/tokens @pediment/components
-```
+Also built forgeyard, a project scaffolding CLI for Rust, Astro, Starlight, and TypeScript projects.
 
-```astro
----
-import BaseLayout from "@pediment/components/BaseLayout.astro";
-import Nav from "@pediment/components/Nav.astro";
----
-<BaseLayout title="My Site">
-  <Nav slot="nav" siteName="My Site" links={[{ label: "Home", href: "/" }]} />
-  <p>Hello world</p>
-</BaseLayout>
-```
-
-**Why it exists:**
-
-I needed a component library that worked properly with Astro and had real theming. Most SolidJS component libraries either don't support Astro or treat it as an afterthought. The design token system uses CSS custom properties, so there's zero bundle cost from theming.
-
-**Architecture:**
-
-- `@pediment/tokens` — Design tokens (Spatial Materialism + Amoebic UI patterns)
-- `@pediment/components` — SolidJS and Astro components
-- `@pediment/hooks` — Shared SolidJS hooks
-- `@pediment/utils` — Security headers, SEO, analytics
-- `@pediment/starlight` — Starlight plugin
-
-MIT/Apache-2.0 licensed.
+And 40 shared Rust crates covering authentication, crypto, web, infrastructure, and testing.
 
 GitHub: https://github.com/WyattAu/pediment
-Storybook: https://storybook.pediment.wyattau.com
