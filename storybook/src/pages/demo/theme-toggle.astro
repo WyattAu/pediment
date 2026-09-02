@@ -1,0 +1,87 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import ThemeToggleDemo from '../../components/theme-toggle';
+---
+
+<StoryLayout title="ThemeToggle" description="Multi-theme switching with persistence">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">ThemeToggle</h1>
+    <p class="text-[var(--text-secondary)]">Cycle through 5 built-in themes with localStorage persistence.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <ThemeToggleDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Available Themes</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-[var(--bg-secondary)] border-b border-[var(--border)]">
+              <th class="px-4 py-2 text-left font-medium">ID</th>
+              <th class="px-4 py-2 text-left font-medium">Label</th>
+              <th class="px-4 py-2 text-left font-medium">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>midnight-navy</code></td>
+              <td class="px-4 py-2">Spatial Materialism</td>
+              <td class="px-4 py-2">Deep navy with material depth</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>solaris</code></td>
+              <td class="px-4 py-2">Amoebic UI</td>
+              <td class="px-4 py-2">Warm, organic tones</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>tokyo-night</code></td>
+              <td class="px-4 py-2">Brutalist</td>
+              <td class="px-4 py-2">Raw, high-contrast urban</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>arctic-dawn</code></td>
+              <td class="px-4 py-2">Tokyo Night</td>
+              <td class="px-4 py-2">Cool purples and teals</td>
+            </tr>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>light</code></td>
+              <td class="px-4 py-2">Arctic Dawn</td>
+              <td class="px-4 py-2">Bright, crisp morning</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import ThemeToggle from "pediment-components/ThemeToggle";
+
+// Simple button that cycles through themes
+<ThemeToggle />
+
+// Manual theme control
+const setTheme = (id: string) => {
+  document.documentElement.setAttribute("data-theme", id);
+  localStorage.setItem("pediment-theme", id);
+};`}</code></pre>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Accessibility</h2>
+      <ul class="list-disc list-inside text-sm text-[var(--text-secondary)] space-y-1">
+        <li>Button includes <code>aria-label</code> with current theme name</li>
+        <li>Theme changes apply via <code>data-theme</code> attribute on <code>&lt;html&gt;</code></li>
+        <li>Respects <code>prefers-color-scheme</code> for initial theme selection</li>
+        <li>Color contrast meets WCAG AA in all themes</li>
+      </ul>
+    </section>
+  </div>
+</StoryLayout>

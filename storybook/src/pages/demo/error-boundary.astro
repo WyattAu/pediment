@@ -1,0 +1,79 @@
+---
+import StoryLayout from '../../layouts/StoryLayout.astro';
+import ErrorBoundaryDemo from '../../components/error-boundary';
+---
+
+<StoryLayout title="ErrorBoundary" description="Graceful error handling and recovery">
+  <div class="mb-8">
+    <a href="/" class="text-sm text-[var(--text-secondary)] hover:text-[var(--accent)]">← Back</a>
+    <h1 class="text-3xl font-bold mt-2 mb-2">ErrorBoundary</h1>
+    <p class="text-[var(--text-secondary)]">Graceful error handling with custom fallback UI and reset functionality.</p>
+  </div>
+
+  <div class="space-y-8">
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Interactive Demo</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
+        <ErrorBoundaryDemo client:only="solid-js" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Props</h2>
+      <div class="rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-[var(--bg-secondary)] border-b border-[var(--border)]">
+              <th class="px-4 py-2 text-left font-medium">Prop</th>
+              <th class="px-4 py-2 text-left font-medium">Type</th>
+              <th class="px-4 py-2 text-left font-medium">Default</th>
+              <th class="px-4 py-2 text-left font-medium">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-[var(--border)]">
+              <td class="px-4 py-2"><code>children</code></td>
+              <td class="px-4 py-2">any</td>
+              <td class="px-4 py-2">—</td>
+              <td class="px-4 py-2">Child components to protect</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Source</h2>
+      <pre><code>{`import ErrorBoundary from "pediment-components/ErrorBoundary";
+
+// Basic usage
+<ErrorBoundary>
+  <MyComponent />
+</ErrorBoundary>
+
+// With SolidJS ErrorBoundary directly for custom fallback
+import { ErrorBoundary, Suspense } from "solid-js";
+
+<ErrorBoundary fallback={(err, reset) => (
+  <div>
+    <p>Error: {err.message}</p>
+    <button onClick={reset}>Try again</button>
+  </div>
+)}>
+  <Suspense fallback={<Loading />}>
+    <MyComponent />
+  </Suspense>
+</ErrorBoundary>`}</code></pre>
+    </section>
+
+    <section>
+      <h2 class="text-lg font-semibold mb-3">Accessibility</h2>
+      <ul class="list-disc list-inside text-sm text-[var(--text-secondary)] space-y-1">
+        <li>Error messages are visible to all users (not just screen readers)</li>
+        <li>Reset buttons are keyboard accessible</li>
+        <li>Fallback UI uses semantic headings for error context</li>
+        <li>Consider adding <code>role="alert"</code> to critical error states</li>
+      </ul>
+    </section>
+  </div>
+</StoryLayout>
