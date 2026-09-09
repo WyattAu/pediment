@@ -25,25 +25,28 @@ done
 | pediment-utils | 1.0.0 | name free, publish as-is |
 | pediment-starlight | 1.0.0 | name free, publish as-is |
 
-## starlight family — naming decisions required BEFORE publish
+## starlight family — naming decisions (DECIDED 2026-09-09)
 
-Registry scan (2026-09):
+All six plugins are published under the **`@wyatt` scope** to avoid every
+possible npm name collision (the audit found `starlight-katex` and
+`starlight-progress` squatted by unrelated crates; scoping all six keeps the
+suite consistent). The `name` fields, READMEs, and MIT LICENSEs are already
+updated in each repo and pushed.
 
-| Local package | npm name status | Decision |
+| Local package | npm name | Decision |
 |---|---|---|
-| starlight-katex | **SQUATTED** — `starlight-katex@0.0.4` (stereobooster, real Starlight plugin) | Do **not** fight the name. Republish as **`@wyatt/starlight-katex`** or pick a distinct name (e.g. `starlight-katex-plus`). Requires updating the plugin's `name` + docs before publishing |
-| starlight-progress | **SQUATTED** — `starlight-progress@1.0.0` (unrelated progress-bar lib) | Same: **`@wyatt/starlight-progress`** or rename |
-| starlight-content-guard | FREE | Publish as-is |
-| starlight-interactive-islands | FREE | Publish as-is |
-| starlight-cross-domain-sync | FREE | Publish as-is |
-| starlight-multi-site | FREE | Publish as-is |
-| starlight-dse-test | FREE but **internal-test name** | Keep private — do not publish |
+| starlight-content-guard | `@wyatt/starlight-content-guard` | Renamed, publishable (build + tests pass) |
+| starlight-cross-domain-sync | `@wyatt/starlight-cross-domain-sync` | Renamed, publishable (tests pass) |
+| starlight-interactive-islands | `@wyatt/starlight-interactive-islands` | Renamed, publishable (tests pass) |
+| starlight-katex | `@wyatt/starlight-katex` | Renamed (unscoped name squatted), publishable |
+| starlight-multi-site | `@wyatt/starlight-multi-site` | Renamed; build fixed (`tsc -p tsconfig.build.json` emits `dist/index.js`), publishable |
+| starlight-progress | `@wyatt/starlight-progress` | Renamed (unscoped name squatted), publishable |
+| starlight-dse-test | — | Keep private — do not publish |
 | starlight-sites | `private: true` | Intentionally unpublished, keep |
-| @wyatt/starlight-kit | Scoped, publishable **only if the `@wyatt` scope is registered** on npmjs.com (site action, one-time) | Register scope if adopting scoped naming |
 
-**Recommendation:** register the `@wyatt` scope once, publish the squatted two
-under scope, the four free ones unscoped, skip `dse-test`/`sites`. Suite
-landing page can then link all of them + pediment.
+**One remaining site action:** the `@wyatt` scope must be registered on
+npmjs.com (one-time) before any `@wyatt/*` publish succeeds. `@wyatt/starlight-kit`
+shares the scope.
 
 ## Launch sequence
 
@@ -67,18 +70,17 @@ for p in tokens components hooks utils starlight; do
 done
 ```
 
-**2. Publish the starlight family** (only after the naming decisions in the
-table above are executed — do not publish `starlight-katex` /
-`starlight-progress` as-is, skip `dse-test`/`sites`):
+**2. Publish the starlight family** (all six renamed to the `@wyatt` scope —
+decisions executed above; do not publish `dse-test`/`sites`):
 
 ```bash
-# free as-is, in separate checkouts:
-(cd ../starlight-content-guard       && npm publish --access public)
+# precondition: @wyatt scope registered on npmjs.com
+(cd ../starlight-content-guard       && npm run build && npm publish --access public)
 (cd ../starlight-cross-domain-sync   && npm publish --access public)
-(cd ../starlight-multi-site          && npm publish --access public)   # after build: dist/ is a files entry
+(cd ../starlight-multi-site          && npm run build && npm publish --access public)   # tsc -p tsconfig.build.json -> dist/
 (cd ../starlight-interactive-islands && npm publish --access public)
-# squatted two: publish as @wyatt/starlight-katex and @wyatt/starlight-progress
-# AFTER registering the @wyatt scope on npmjs.com
+(cd ../starlight-katex               && npm publish --access public)
+(cd ../starlight-progress            && npm publish --access public)
 ```
 
 **3. Post-publish verification**
