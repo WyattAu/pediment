@@ -10,7 +10,9 @@ export default function ModalDemo() {
     <div class="space-y-4">
       <div class="flex flex-wrap gap-4 items-end">
         <div>
-          <label class="block text-xs text-[var(--text-secondary)] mb-1">Size</label>
+          <label class="block text-xs text-[var(--text-secondary)] mb-1">
+            Size
+          </label>
           <select
             value={size()}
             onChange={(e) => setSize(e.currentTarget.value as any)}
@@ -35,7 +37,12 @@ export default function ModalDemo() {
         </button>
       </div>
 
-      <Modal open={open()} onClose={() => setOpen(false)} title="Example Modal" size={size()}>
+      <Modal
+        open={open()}
+        onClose={() => setOpen(false)}
+        title="Example Modal"
+        size={size()}
+      >
         <p class="text-sm text-[var(--text-secondary)] mb-4">
           This is a modal dialog. You can put any content here.
         </p>
@@ -55,7 +62,10 @@ export default function ModalDemo() {
         message="This action cannot be undone. Are you sure you want to proceed?"
         confirmLabel="Delete"
         variant="danger"
-        onConfirm={() => { setConfirmOpen(false); alert("Deleted!"); }}
+        onConfirm={() => {
+          setConfirmOpen(false);
+          alert("Deleted!");
+        }}
         onCancel={() => setConfirmOpen(false)}
       />
     </div>

@@ -10,10 +10,14 @@ export interface SkeletonProps {
 export default function Skeleton(props: SkeletonProps) {
   const rounded = () => {
     switch (props.rounded ?? "md") {
-      case "sm": return "rounded-[var(--radius-sm)]";
-      case "lg": return "rounded-[var(--radius-lg)]";
-      case "full": return "rounded-full";
-      default: return "rounded-[var(--radius-md)]";
+      case "sm":
+        return "rounded-[var(--radius-sm)]";
+      case "lg":
+        return "rounded-[var(--radius-lg)]";
+      case "full":
+        return "rounded-full";
+      default:
+        return "rounded-[var(--radius-md)]";
     }
   };
 
@@ -43,7 +47,9 @@ export function SkeletonText(props: { lines?: number; class?: string }) {
 
 export function SkeletonCard(props: { class?: string }) {
   return (
-    <div class={`rounded-[var(--radius-md)] border border-[var(--border)] p-4 space-y-3 ${props.class ?? ""}`}>
+    <div
+      class={`rounded-[var(--radius-md)] border border-[var(--border)] p-4 space-y-3 ${props.class ?? ""}`}
+    >
       <div class="flex items-center gap-3">
         <Skeleton width="2.5rem" height="2.5rem" rounded="full" />
         <div class="flex-1 space-y-2">

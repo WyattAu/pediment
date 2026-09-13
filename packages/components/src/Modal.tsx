@@ -19,9 +19,12 @@ export function Modal(props: ModalProps) {
 
   const maxWidth = () => {
     switch (props.size) {
-      case "sm": return "max-w-sm";
-      case "lg": return "max-w-2xl";
-      default: return "max-w-lg";
+      case "sm":
+        return "max-w-sm";
+      case "lg":
+        return "max-w-2xl";
+      default:
+        return "max-w-lg";
     }
   };
 
@@ -35,10 +38,14 @@ export function Modal(props: ModalProps) {
         aria-modal="true"
         aria-label={props.title}
       >
-        <div class={`w-full ${maxWidth()} mx-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow-elevation-4)]`}>
+        <div
+          class={`w-full ${maxWidth()} mx-4 rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] shadow-[var(--shadow-elevation-4)]`}
+        >
           <Show when={props.title}>
             <div class="flex items-center justify-between border-b border-[var(--border)] px-6 py-4">
-              <h2 class="text-lg font-semibold text-[var(--text-primary)]">{props.title}</h2>
+              <h2 class="text-lg font-semibold text-[var(--text-primary)]">
+                {props.title}
+              </h2>
               <button
                 onClick={props.onClose}
                 class="rounded-[var(--radius-sm)] p-1 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] transition-colors"
@@ -48,9 +55,7 @@ export function Modal(props: ModalProps) {
               </button>
             </div>
           </Show>
-          <div class="px-6 py-4">
-            {props.children}
-          </div>
+          <div class="px-6 py-4">{props.children}</div>
         </div>
       </div>
     </Show>
@@ -70,7 +75,11 @@ export interface ConfirmModalProps {
 
 export function ConfirmModal(props: ConfirmModalProps) {
   return (
-    <Modal open={props.open} onClose={props.onCancel} title={props.title ?? "Confirm"}>
+    <Modal
+      open={props.open}
+      onClose={props.onCancel}
+      title={props.title ?? "Confirm"}
+    >
       <p class="text-sm text-[var(--text-secondary)]">{props.message}</p>
       <div class="mt-4 flex justify-end gap-2">
         <button

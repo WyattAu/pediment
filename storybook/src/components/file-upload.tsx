@@ -10,11 +10,17 @@ export default function FileUploadDemo() {
     <div class="space-y-4">
       <div class="flex flex-wrap gap-4 items-end">
         <label class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-          <input type="checkbox" checked={multiple()} onChange={(e) => setMultiple(e.currentTarget.checked)} />
+          <input
+            type="checkbox"
+            checked={multiple()}
+            onChange={(e) => setMultiple(e.currentTarget.checked)}
+          />
           Multiple files
         </label>
         <div>
-          <label class="block text-xs text-[var(--text-secondary)] mb-1">Accept</label>
+          <label class="block text-xs text-[var(--text-secondary)] mb-1">
+            Accept
+          </label>
           <select
             value={accept()}
             onChange={(e) => setAccept(e.currentTarget.value)}
@@ -26,7 +32,9 @@ export default function FileUploadDemo() {
           </select>
         </div>
         <div>
-          <label class="block text-xs text-[var(--text-secondary)] mb-1">Max size (MB)</label>
+          <label class="block text-xs text-[var(--text-secondary)] mb-1">
+            Max size (MB)
+          </label>
           <input
             type="number"
             value={maxSizeMB()}

@@ -10,7 +10,9 @@ export default function AvatarDemo() {
     <div class="space-y-6">
       <div class="flex flex-wrap gap-4 items-end">
         <div>
-          <label class="block text-xs text-[var(--text-secondary)] mb-1">Name</label>
+          <label class="block text-xs text-[var(--text-secondary)] mb-1">
+            Name
+          </label>
           <input
             type="text"
             value={name()}
@@ -19,7 +21,9 @@ export default function AvatarDemo() {
           />
         </div>
         <div>
-          <label class="block text-xs text-[var(--text-secondary)] mb-1">Size</label>
+          <label class="block text-xs text-[var(--text-secondary)] mb-1">
+            Size
+          </label>
           <select
             value={size()}
             onChange={(e) => setSize(e.currentTarget.value as any)}
@@ -32,7 +36,9 @@ export default function AvatarDemo() {
           </select>
         </div>
         <div>
-          <label class="block text-xs text-[var(--text-secondary)] mb-1">Image URL (optional)</label>
+          <label class="block text-xs text-[var(--text-secondary)] mb-1">
+            Image URL (optional)
+          </label>
           <input
             type="text"
             value={src()}

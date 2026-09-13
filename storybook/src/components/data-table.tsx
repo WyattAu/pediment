@@ -8,7 +8,12 @@ export default function DataTableDemo() {
   const data = [
     { id: 1, name: "Alice Johnson", email: "alice@example.com", role: "Admin" },
     { id: 2, name: "Bob Smith", email: "bob@example.com", role: "User" },
-    { id: 3, name: "Carol Williams", email: "carol@example.com", role: "Editor" },
+    {
+      id: 3,
+      name: "Carol Williams",
+      email: "carol@example.com",
+      role: "Editor",
+    },
     { id: 4, name: "David Brown", email: "david@example.com", role: "User" },
     { id: 5, name: "Eve Davis", email: "eve@example.com", role: "Admin" },
     { id: 6, name: "Frank Miller", email: "frank@example.com", role: "User" },
@@ -26,11 +31,17 @@ export default function DataTableDemo() {
     <div class="space-y-4">
       <div class="flex flex-wrap gap-4 items-center">
         <label class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-          <input type="checkbox" checked={searchable()} onChange={(e) => setSearchable(e.currentTarget.checked)} />
+          <input
+            type="checkbox"
+            checked={searchable()}
+            onChange={(e) => setSearchable(e.currentTarget.checked)}
+          />
           Searchable
         </label>
         <div>
-          <label class="block text-xs text-[var(--text-secondary)] mb-1">Page size</label>
+          <label class="block text-xs text-[var(--text-secondary)] mb-1">
+            Page size
+          </label>
           <select
             value={pageSize()}
             onChange={(e) => setPageSize(Number(e.currentTarget.value))}
@@ -42,7 +53,12 @@ export default function DataTableDemo() {
           </select>
         </div>
       </div>
-      <DataTable data={data} columns={columns} pageSize={pageSize()} searchable={searchable()} />
+      <DataTable
+        data={data}
+        columns={columns}
+        pageSize={pageSize()}
+        searchable={searchable()}
+      />
     </div>
   );
 }

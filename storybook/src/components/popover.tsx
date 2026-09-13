@@ -2,12 +2,16 @@ import { createSignal } from "solid-js";
 import { Popover } from "pediment-components";
 
 export default function PopoverDemo() {
-  const [position, setPosition] = createSignal<"top" | "bottom" | "left" | "right">("bottom");
+  const [position, setPosition] = createSignal<
+    "top" | "bottom" | "left" | "right"
+  >("bottom");
 
   return (
     <div class="space-y-4">
       <div>
-        <label class="block text-xs text-[var(--text-secondary)] mb-1">Position</label>
+        <label class="block text-xs text-[var(--text-secondary)] mb-1">
+          Position
+        </label>
         <select
           value={position()}
           onChange={(e) => setPosition(e.currentTarget.value as any)}
@@ -30,8 +34,12 @@ export default function PopoverDemo() {
           position={position()}
         >
           <div class="w-48">
-            <p class="text-sm font-medium text-[var(--text-primary)] mb-1">Popover Title</p>
-            <p class="text-xs text-[var(--text-secondary)]">This is popover content with some useful information.</p>
+            <p class="text-sm font-medium text-[var(--text-primary)] mb-1">
+              Popover Title
+            </p>
+            <p class="text-xs text-[var(--text-secondary)]">
+              This is popover content with some useful information.
+            </p>
           </div>
         </Popover>
       </div>

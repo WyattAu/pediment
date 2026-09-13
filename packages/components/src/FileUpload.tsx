@@ -16,9 +16,11 @@ export default function FileUpload(props: FileUploadProps) {
   const handleFiles = (fileList: FileList) => {
     const newFiles = Array.from(fileList);
     const maxSize = props.maxSize ?? 10 * 1024 * 1024; // 10MB default
-    const oversized = newFiles.find(f => f.size > maxSize);
+    const oversized = newFiles.find((f) => f.size > maxSize);
     if (oversized) {
-      setError(`File "${oversized.name}" exceeds maximum size of ${Math.round(maxSize / 1024 / 1024)}MB`);
+      setError(
+        `File "${oversized.name}" exceeds maximum size of ${Math.round(maxSize / 1024 / 1024)}MB`,
+      );
       return;
     }
     setError("");
@@ -42,17 +44,31 @@ export default function FileUpload(props: FileUploadProps) {
   return (
     <div class={props.class ?? ""}>
       <div
-        onDragOver={(e) => { e.preventDefault(); setDragging(true); }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          setDragging(true);
+        }}
         onDragLeave={() => setDragging(false)}
-        onDrop={(e) => { e.preventDefault(); setDragging(false); handleFiles(e.dataTransfer.files); }}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragging(false);
+          handleFiles(e.dataTransfer.files);
+        }}
         class={`flex flex-col items-center justify-center rounded-[var(--radius-md)] border-2 border-dashed p-8 transition-colors ${
-          dragging() ? "border-[var(--accent)] bg-[var(--accent)]/5" : "border-[var(--border)] hover:border-[var(--accent)]/50"
+          dragging()
+            ? "border-[var(--accent)] bg-[var(--accent)]/5"
+            : "border-[var(--border)] hover:border-[var(--accent)]/50"
         }`}
       >
         <div class="text-3xl mb-2">📁</div>
-        <p class="text-sm text-[var(--text-primary)] font-medium">Drop files here or click to upload</p>
+        <p class="text-sm text-[var(--text-primary)] font-medium">
+          Drop files here or click to upload
+        </p>
         <p class="text-xs text-[var(--text-secondary)] mt-1">
-          {props.accept ?? "Any file"} {props.maxSize ? `• Max ${Math.round(props.maxSize / 1024 / 1024)}MB` : ""}
+          {props.accept ?? "Any file"}{" "}
+          {props.maxSize
+            ? `• Max ${Math.round(props.maxSize / 1024 / 1024)}MB`
+            : ""}
         </p>
         <input
           type="file"
@@ -72,10 +88,19 @@ export default function FileUpload(props: FileUploadProps) {
               <div class="flex items-center justify-between rounded-[var(--radius-sm)] border border-[var(--border)] px-3 py-2">
                 <div class="flex items-center gap-2 min-w-0">
                   <span class="text-sm">📄</span>
-                  <span class="text-sm text-[var(--text-primary)] truncate">{file.name}</span>
-                  <span class="text-xs text-[var(--text-secondary)]">{formatSize(file.size)}</span>
+                  <span class="text-sm text-[var(--text-primary)] truncate">
+                    {file.name}
+                  </span>
+                  <span class="text-xs text-[var(--text-secondary)]">
+                    {formatSize(file.size)}
+                  </span>
                 </div>
-                <button onClick={() => removeFile(i())} class="text-[var(--text-secondary)] hover:text-red-500 text-sm">×</button>
+                <button
+                  onClick={() => removeFile(i())}
+                  class="text-[var(--text-secondary)] hover:text-red-500 text-sm"
+                >
+                  ×
+                </button>
               </div>
             )}
           </For>

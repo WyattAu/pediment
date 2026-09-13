@@ -1,6 +1,12 @@
 import { createSignal, onMount, Show } from "solid-js";
 
-const THEMES = ["midnight-navy", "tokyo-night", "arctic-dawn", "solaris", "light"] as const;
+const THEMES = [
+  "midnight-navy",
+  "tokyo-night",
+  "arctic-dawn",
+  "solaris",
+  "light",
+] as const;
 
 export default function ThemeToggle() {
   const [theme, setTheme] = createSignal<string>("midnight-navy");
@@ -11,7 +17,9 @@ export default function ThemeToggle() {
       setTheme(stored);
       document.documentElement.setAttribute("data-theme", stored);
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
       const initial = prefersDark ? "midnight-navy" : "light";
       setTheme(initial);
       document.documentElement.setAttribute("data-theme", initial);

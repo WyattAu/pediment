@@ -8,35 +8,60 @@ const themes = [
     name: "Midnight Navy",
     description: "Deep dark theme with cyan accent. Default theme.",
     type: "dark",
-    preview: { bg: "#050505", bgSecondary: "#0a0a0a", text: "#ffffff", accent: "#00e5ff" },
+    preview: {
+      bg: "#050505",
+      bgSecondary: "#0a0a0a",
+      text: "#ffffff",
+      accent: "#00e5ff",
+    },
   },
   {
     id: "tokyo-night",
     name: "Tokyo Night",
     description: "Muted dark theme inspired by the Tokyo Night color scheme.",
     type: "dark",
-    preview: { bg: "#1a1b26", bgSecondary: "#1f2335", text: "#c0caf5", accent: "#7aa2f7" },
+    preview: {
+      bg: "#1a1b26",
+      bgSecondary: "#1f2335",
+      text: "#c0caf5",
+      accent: "#7aa2f7",
+    },
   },
   {
     id: "solaris",
     name: "Solaris",
     description: "GitHub-inspired dark theme with warm orange accent.",
     type: "dark",
-    preview: { bg: "#0d1117", bgSecondary: "#161b22", text: "#e6edf3", accent: "#f0883e" },
+    preview: {
+      bg: "#0d1117",
+      bgSecondary: "#161b22",
+      text: "#e6edf3",
+      accent: "#f0883e",
+    },
   },
   {
     id: "arctic-dawn",
     name: "Arctic Dawn",
     description: "Clean, cool-toned light theme with blue accent.",
     type: "light",
-    preview: { bg: "#f0f4f8", bgSecondary: "#e2e8f0", text: "#1a202c", accent: "#0055ee" },
+    preview: {
+      bg: "#f0f4f8",
+      bgSecondary: "#e2e8f0",
+      text: "#1a202c",
+      accent: "#0055ee",
+    },
   },
   {
     id: "light",
     name: "Light",
     description: "Classic light theme with sky blue accent.",
     type: "light",
-    preview: { bg: "#ffffff", bgSecondary: "#f8fafc", text: "#0f172a", accent: "#0ea5e9" },
+    preview: {
+      bg: "#ffffff",
+      bgSecondary: "#f8fafc",
+      text: "#0f172a",
+      accent: "#0ea5e9",
+    },
   },
 ];
 ---
@@ -103,7 +128,7 @@ const themes = [
           Pediment uses CSS custom properties for theming. All components reference these variables, allowing you to override the entire design system by changing a few values.
         </p>
         <pre><code>/* themes/my-brand.css */
-[data-theme="my-brand"] {{
+[data-theme="my-brand"] &#123;&#123;
   --bg-primary: #f0fdf4;
   --bg-secondary: #dcfce7;
   --bg-card: #ffffff;
@@ -112,7 +137,7 @@ const themes = [
   --accent: #22c55e;
   --accent-warm: #f97316;
   --border: #bbf7d0;
-}}</code></pre>
+&#125;&#125;</code></pre>
       </div>
     </section>
 
@@ -126,7 +151,7 @@ const themes = [
             Create a CSS file with your theme's color overrides.
           </p>
           <pre><code>/* themes/my-brand.css */
-[data-theme="my-brand"] {{
+[data-theme="my-brand"] &#123;&#123;
   --bg-primary: #fafafa;
   --bg-secondary: #f4f4f5;
   --bg-card: #ffffff;
@@ -135,7 +160,7 @@ const themes = [
   --accent: #6d28d9;
   --accent-warm: #ea580c;
   --border: #e4e4e7;
-}}</code></pre>
+&#125;&#125;</code></pre>
         </div>
         <div class="rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--bg-card)] p-6">
           <h3 class="mb-3 text-lg font-semibold text-[var(--text-primary)]">Step 2: Apply the Theme</h3>

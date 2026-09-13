@@ -7,7 +7,11 @@ export default function SkeletonDemo() {
   return (
     <div class="space-y-6">
       <label class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-        <input type="checkbox" checked={showContent()} onChange={(e) => setShowContent(e.currentTarget.checked)} />
+        <input
+          type="checkbox"
+          checked={showContent()}
+          onChange={(e) => setShowContent(e.currentTarget.checked)}
+        />
         Show loaded content
       </label>
 
@@ -15,13 +19,16 @@ export default function SkeletonDemo() {
         <div class="space-y-4">
           <h3 class="text-lg font-semibold">Loaded Content</h3>
           <p class="text-sm text-[var(--text-secondary)]">
-            This is the actual content that would appear after loading completes.
+            This is the actual content that would appear after loading
+            completes.
           </p>
           <div class="flex items-center gap-3">
             <div class="h-10 w-10 rounded-full bg-[var(--accent)]" />
             <div>
               <p class="text-sm font-medium">Jane Doe</p>
-              <p class="text-xs text-[var(--text-secondary)]">Software Engineer</p>
+              <p class="text-xs text-[var(--text-secondary)]">
+                Software Engineer
+              </p>
             </div>
           </div>
         </div>

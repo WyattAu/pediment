@@ -16,10 +16,12 @@ export interface TabsProps {
 }
 
 export default function Tabs(props: TabsProps) {
-  const [active, setActive] = createSignal(props.activeTab ?? props.tabs[0]?.id ?? "");
+  const [active, setActive] = createSignal(
+    props.activeTab ?? props.tabs[0]?.id ?? "",
+  );
 
   const selectTab = (id: string) => {
-    const tab = props.tabs.find(t => t.id === id);
+    const tab = props.tabs.find((t) => t.id === id);
     if (tab?.disabled) return;
     setActive(id);
     props.onChange?.(id);
@@ -27,7 +29,9 @@ export default function Tabs(props: TabsProps) {
 
   return (
     <div class={props.class ?? ""}>
-      <div class={`flex gap-1 border-b ${props.variant === "enclosed" ? "border-[var(--border)]" : "border-[var(--border)]"}`}>
+      <div
+        class={`flex gap-1 border-b ${props.variant === "enclosed" ? "border-[var(--border)]" : "border-[var(--border)]"}`}
+      >
         <For each={props.tabs}>
           {(tab) => (
             <button
@@ -38,12 +42,14 @@ export default function Tabs(props: TabsProps) {
                   ? props.variant === "pills"
                     ? "rounded-[var(--radius-sm)] bg-[var(--accent)] text-white"
                     : props.variant === "enclosed"
-                    ? "border border-b-0 border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-primary)] -mb-px"
-                    : "border-b-2 border-[var(--accent)] text-[var(--accent)]"
+                      ? "border border-b-0 border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-primary)] -mb-px"
+                      : "border-b-2 border-[var(--accent)] text-[var(--accent)]"
                   : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
               } ${tab.disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
             >
-              <Show when={tab.icon}><span>{tab.icon}</span></Show>
+              <Show when={tab.icon}>
+                <span>{tab.icon}</span>
+              </Show>
               {tab.label}
             </button>
           )}

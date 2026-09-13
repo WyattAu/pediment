@@ -17,20 +17,24 @@ export interface DataTableProps<T> {
   emptyMessage?: string;
 }
 
-export default function DataTable<T extends Record<string, any>>(props: DataTableProps<T>) {
+export default function DataTable<T extends Record<string, any>>(
+  props: DataTableProps<T>,
+) {
   const [sortKey, setSortKey] = createSignal<string>("");
   const [sortDir, setSortDir] = createSignal<"asc" | "desc">("asc");
   const [search, setSearch] = createSignal("");
   const [page, setPage] = createSignal(1);
-  
+
   const pageSize = () => props.pageSize ?? 10;
-  
+
   const filtered = createMemo(() => {
     let result = props.data;
     const q = search().toLowerCase();
     if (q) {
-      result = result.filter(row =>
-        props.columns.some(col => String(row[col.key]).toLowerCase().includes(q))
+      result = result.filter((row) =>
+        props.columns.some((col) =>
+          String(row[col.key]).toLowerCase().includes(q),
+        ),
       );
     }
     return result;
@@ -56,7 +60,7 @@ export default function DataTable<T extends Record<string, any>>(props: DataTabl
 
   const toggleSort = (key: string) => {
     if (sortKey() === key) {
-      setSortDir(d => d === "asc" ? "desc" : "asc");
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
     } else {
       setSortKey(key);
       setSortDir("asc");
@@ -89,7 +93,9 @@ export default function DataTable<T extends Record<string, any>>(props: DataTabl
                   >
                     {col.header}
                     <Show when={sortKey() === col.key}>
-                      <span class="ml-1">{sortDir() === "asc" ? "▲" : "▼"}</span>
+                      <span class="ml-1">
+                        {sortDir() === "asc" ? "▲" : "▼"}
+                      </span>
                     </Show>
                   </th>
                 )}
@@ -101,7 +107,10 @@ export default function DataTable<T extends Record<string, any>>(props: DataTabl
               when={paged().length > 0}
               fallback={
                 <tr>
-                  <td colspan={props.columns.length} class="px-4 py-8 text-center text-[var(--text-secondary)]">
+                  <td
+                    colspan={props.columns.length}
+                    class="px-4 py-8 text-center text-[var(--text-secondary)]"
+                  >
                     {props.emptyMessage ?? "No data available"}
                   </td>
                 </tr>
@@ -113,7 +122,9 @@ export default function DataTable<T extends Record<string, any>>(props: DataTabl
                     <For each={props.columns}>
                       {(col) => (
                         <td class="px-4 py-3">
-                          {col.render ? col.render(row) : String(row[col.key] ?? "")}
+                          {col.render
+                            ? col.render(row)
+                            : String(row[col.key] ?? "")}
                         </td>
                       )}
                     </For>
@@ -131,14 +142,14 @@ export default function DataTable<T extends Record<string, any>>(props: DataTabl
           </span>
           <div class="flex gap-2">
             <button
-              onClick={() => setPage(p => Math.max(1, p - 1))}
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page() === 1}
               class="rounded-[var(--radius-sm)] border border-[var(--border)] px-3 py-1 text-sm disabled:opacity-50"
             >
               Previous
             </button>
             <button
-              onClick={() => setPage(p => Math.min(totalPages(), p + 1))}
+              onClick={() => setPage((p) => Math.min(totalPages(), p + 1))}
               disabled={page() === totalPages()}
               class="rounded-[var(--radius-sm)] border border-[var(--border)] px-3 py-1 text-sm disabled:opacity-50"
             >

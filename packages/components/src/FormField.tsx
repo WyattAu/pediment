@@ -21,7 +21,9 @@ export interface FormFieldProps {
 
 export default function FormField(props: FormFieldProps) {
   const [touched, setTouched] = createSignal(false);
-  const [localError, setLocalError] = createSignal<string | undefined>(undefined);
+  const [localError, setLocalError] = createSignal<string | undefined>(
+    undefined,
+  );
 
   const validate = (value: string) => {
     if (!props.rules) return;
@@ -38,7 +40,10 @@ export default function FormField(props: FormFieldProps) {
 
   return (
     <div class={`flex flex-col gap-1.5 ${props.class ?? ""}`}>
-      <label for={props.name} class="text-sm font-medium text-[var(--text-primary)]">
+      <label
+        for={props.name}
+        class="text-sm font-medium text-[var(--text-primary)]"
+      >
         {props.label}
         <Show when={props.required}>
           <span class="text-red-500 ml-0.5">*</span>
@@ -53,7 +58,10 @@ export default function FormField(props: FormFieldProps) {
         required={props.required}
         disabled={props.disabled}
         onInput={(e) => validate(e.currentTarget.value)}
-        onBlur={(e) => { setTouched(true); validate(e.currentTarget.value); }}
+        onBlur={(e) => {
+          setTouched(true);
+          validate(e.currentTarget.value);
+        }}
         class={`rounded-[var(--radius-sm)] border px-3 py-2 text-sm bg-[var(--bg-card)] text-[var(--text-primary)] transition-colors ${
           displayError()
             ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"

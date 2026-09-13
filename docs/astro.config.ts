@@ -5,7 +5,8 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Pediment",
-      description: "Shared design tokens, components, hooks, and utilities for Astro+SolidJS+Starlight+Cloudflare projects",
+      description:
+        "Shared design tokens, components, hooks, and utilities for Astro+SolidJS+Starlight+Cloudflare projects",
       sidebar: [
         {
           label: "Getting Started",

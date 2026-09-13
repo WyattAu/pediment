@@ -28,16 +28,35 @@ export default function Pagination(props: PaginationProps) {
   });
 
   return (
-    <nav class={`flex items-center gap-1 ${props.class ?? ""}`} aria-label="Pagination">
+    <nav
+      class={`flex items-center gap-1 ${props.class ?? ""}`}
+      aria-label="Pagination"
+    >
       <Show when={props.showFirstLast}>
-        <button onClick={() => props.onPageChange?.(1)} disabled={props.page === 1} class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]">«</button>
+        <button
+          onClick={() => props.onPageChange?.(1)}
+          disabled={props.page === 1}
+          class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]"
+        >
+          «
+        </button>
       </Show>
-      <button onClick={() => props.onPageChange?.(props.page - 1)} disabled={props.page === 1} class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]">‹</button>
+      <button
+        onClick={() => props.onPageChange?.(props.page - 1)}
+        disabled={props.page === 1}
+        class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]"
+      >
+        ‹
+      </button>
       <For each={pages()}>
         {(p) => (
           <Show
             when={p !== "..."}
-            fallback={<span class="px-1 py-1.5 text-sm text-[var(--text-secondary)]">…</span>}
+            fallback={
+              <span class="px-1 py-1.5 text-sm text-[var(--text-secondary)]">
+                …
+              </span>
+            }
           >
             <button
               onClick={() => props.onPageChange?.(p as number)}
@@ -52,9 +71,21 @@ export default function Pagination(props: PaginationProps) {
           </Show>
         )}
       </For>
-      <button onClick={() => props.onPageChange?.(props.page + 1)} disabled={props.page === totalPages()} class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]">›</button>
+      <button
+        onClick={() => props.onPageChange?.(props.page + 1)}
+        disabled={props.page === totalPages()}
+        class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]"
+      >
+        ›
+      </button>
       <Show when={props.showFirstLast}>
-        <button onClick={() => props.onPageChange?.(totalPages())} disabled={props.page === totalPages()} class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]">»</button>
+        <button
+          onClick={() => props.onPageChange?.(totalPages())}
+          disabled={props.page === totalPages()}
+          class="rounded-[var(--radius-sm)] px-2 py-1.5 text-sm disabled:opacity-50 hover:bg-[var(--bg-secondary)]"
+        >
+          »
+        </button>
       </Show>
     </nav>
   );

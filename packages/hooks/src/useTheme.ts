@@ -1,6 +1,12 @@
 import { createSignal, onMount } from "solid-js";
 
-const THEMES = ["midnight-navy", "tokyo-night", "arctic-dawn", "solaris", "light"] as const;
+const THEMES = [
+  "midnight-navy",
+  "tokyo-night",
+  "arctic-dawn",
+  "solaris",
+  "light",
+] as const;
 
 export function useTheme() {
   const [theme, setTheme] = createSignal<string>("midnight-navy");

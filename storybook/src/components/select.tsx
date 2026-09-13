@@ -20,15 +20,27 @@ export default function SelectDemo() {
     <div class="space-y-4 max-w-sm">
       <div class="flex flex-wrap gap-4">
         <label class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-          <input type="checkbox" checked={multiple()} onChange={(e) => setMultiple(e.currentTarget.checked)} />
+          <input
+            type="checkbox"
+            checked={multiple()}
+            onChange={(e) => setMultiple(e.currentTarget.checked)}
+          />
           Multiple
         </label>
         <label class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-          <input type="checkbox" checked={searchable()} onChange={(e) => setSearchable(e.currentTarget.checked)} />
+          <input
+            type="checkbox"
+            checked={searchable()}
+            onChange={(e) => setSearchable(e.currentTarget.checked)}
+          />
           Searchable
         </label>
         <label class="flex items-center gap-2 text-sm text-[var(--text-secondary)]">
-          <input type="checkbox" checked={disabled()} onChange={(e) => setDisabled(e.currentTarget.checked)} />
+          <input
+            type="checkbox"
+            checked={disabled()}
+            onChange={(e) => setDisabled(e.currentTarget.checked)}
+          />
           Disabled
         </label>
       </div>

@@ -6,7 +6,12 @@ export interface Props {
   canonical?: string;
 }
 
-const { title, description = '', image = '/og-default.png', canonical } = Astro.url;
+const {
+  title,
+  description = "",
+  image = "/og-default.png",
+  canonical,
+} = Astro.url;
 const ogImage = new URL(image, Astro.site).href;
 ---
 

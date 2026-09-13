@@ -14,24 +14,29 @@ let nextId = 0;
 const toast = (t: Omit<Toast, "id">) => {
   const id = `toast-${++nextId}`;
   const newToast = { ...t, id, duration: t.duration ?? 5000 };
-  setToasts(prev => [...prev, newToast]);
+  setToasts((prev) => [...prev, newToast]);
   if (newToast.duration && newToast.duration > 0) {
     setTimeout(() => {
-      setToasts(prev => prev.filter(t => t.id !== id));
+      setToasts((prev) => prev.filter((t) => t.id !== id));
     }, newToast.duration);
   }
   return id;
 };
 
 export const showToast = {
-  success: (title: string, message?: string) => toast({ type: "success", title, message }),
-  error: (title: string, message?: string) => toast({ type: "error", title, message, duration: 8000 }),
-  warning: (title: string, message?: string) => toast({ type: "warning", title, message }),
-  info: (title: string, message?: string) => toast({ type: "info", title, message }),
+  success: (title: string, message?: string) =>
+    toast({ type: "success", title, message }),
+  error: (title: string, message?: string) =>
+    toast({ type: "error", title, message, duration: 8000 }),
+  warning: (title: string, message?: string) =>
+    toast({ type: "warning", title, message }),
+  info: (title: string, message?: string) =>
+    toast({ type: "info", title, message }),
 };
 
 export function ToastContainer() {
-  const dismiss = (id: string) => setToasts(prev => prev.filter(t => t.id !== id));
+  const dismiss = (id: string) =>
+    setToasts((prev) => prev.filter((t) => t.id !== id));
 
   const icons: Record<string, string> = {
     success: "✓",
@@ -51,7 +56,9 @@ export function ToastContainer() {
     <div class="fixed bottom-4 right-4 z-[var(--z-toast)] flex flex-col gap-2 max-w-sm">
       <For each={toasts()}>
         {(t) => (
-          <div class={`flex items-start gap-3 rounded-[var(--radius-md)] border-l-4 bg-[var(--bg-card)] p-4 shadow-[var(--shadow-elevation-3)] animate-slide-in ${colors[t.type]}`}>
+          <div
+            class={`flex items-start gap-3 rounded-[var(--radius-md)] border-l-4 bg-[var(--bg-card)] p-4 shadow-[var(--shadow-elevation-3)] animate-slide-in ${colors[t.type]}`}
+          >
             <span class="text-lg mt-0.5">{icons[t.type]}</span>
             <div class="flex-1 min-w-0">
               <p class="text-sm font-medium">{t.title}</p>
@@ -59,7 +66,13 @@ export function ToastContainer() {
                 <p class="mt-1 text-sm opacity-80">{t.message}</p>
               </Show>
             </div>
-            <button onClick={() => dismiss(t.id)} class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-lg leading-none" aria-label="Dismiss">×</button>
+            <button
+              onClick={() => dismiss(t.id)}
+              class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] text-lg leading-none"
+              aria-label="Dismiss"
+            >
+              ×
+            </button>
           </div>
         )}
       </For>

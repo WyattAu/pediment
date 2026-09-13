@@ -2,12 +2,16 @@ import { createSignal } from "solid-js";
 import { Tooltip } from "pediment-components";
 
 export default function TooltipDemo() {
-  const [position, setPosition] = createSignal<"top" | "bottom" | "left" | "right">("top");
+  const [position, setPosition] = createSignal<
+    "top" | "bottom" | "left" | "right"
+  >("top");
 
   return (
     <div class="space-y-6">
       <div>
-        <label class="block text-xs text-[var(--text-secondary)] mb-1">Position</label>
+        <label class="block text-xs text-[var(--text-secondary)] mb-1">
+          Position
+        </label>
         <select
           value={position()}
           onChange={(e) => setPosition(e.currentTarget.value as any)}
@@ -44,7 +48,10 @@ export default function TooltipDemo() {
       </div>
 
       <div class="pt-4">
-        <p class="text-sm text-[var(--text-secondary)]">Current position: <span class="text-[var(--accent)]">{position()}</span></p>
+        <p class="text-sm text-[var(--text-secondary)]">
+          Current position:{" "}
+          <span class="text-[var(--accent)]">{position()}</span>
+        </p>
       </div>
     </div>
   );

@@ -20,7 +20,13 @@ program
       process.exit(1);
     }
     // Copy template from pediment/templates/astro-solidjs/
-    const templateDir = path.join(__dirname, "..", "..", "templates", "astro-solidjs");
+    const templateDir = path.join(
+      __dirname,
+      "..",
+      "..",
+      "templates",
+      "astro-solidjs",
+    );
     fs.cpSync(templateDir, targetDir, { recursive: true });
     // Replace project name in package.json
     const pkgPath = path.join(targetDir, "package.json");

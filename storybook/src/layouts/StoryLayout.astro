@@ -4,26 +4,27 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = 'Interactive component demos for Pediment' } = Astro.props;
+const { title, description = "Interactive component demos for Pediment" } =
+  Astro.props;
 
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Accordion', href: '/demo/accordion' },
-  { label: 'Avatar', href: '/demo/avatar' },
-  { label: 'Badge', href: '/demo/badge' },
-  { label: 'Command Palette', href: '/demo/command-palette' },
-  { label: 'Data Table', href: '/demo/data-table' },
-  { label: 'Date Picker', href: '/demo/date-picker' },
-  { label: 'File Upload', href: '/demo/file-upload' },
-  { label: 'Form Field', href: '/demo/form-field' },
-  { label: 'Modal', href: '/demo/modal' },
-  { label: 'Pagination', href: '/demo/pagination' },
-  { label: 'Popover', href: '/demo/popover' },
-  { label: 'Select', href: '/demo/select' },
-  { label: 'Skeleton', href: '/demo/skeleton' },
-  { label: 'Tabs', href: '/demo/tabs' },
-  { label: 'Toast', href: '/demo/toast' },
-  { label: 'Tooltip', href: '/demo/tooltip' },
+  { label: "Home", href: "/" },
+  { label: "Accordion", href: "/demo/accordion" },
+  { label: "Avatar", href: "/demo/avatar" },
+  { label: "Badge", href: "/demo/badge" },
+  { label: "Command Palette", href: "/demo/command-palette" },
+  { label: "Data Table", href: "/demo/data-table" },
+  { label: "Date Picker", href: "/demo/date-picker" },
+  { label: "File Upload", href: "/demo/file-upload" },
+  { label: "Form Field", href: "/demo/form-field" },
+  { label: "Modal", href: "/demo/modal" },
+  { label: "Pagination", href: "/demo/pagination" },
+  { label: "Popover", href: "/demo/popover" },
+  { label: "Select", href: "/demo/select" },
+  { label: "Skeleton", href: "/demo/skeleton" },
+  { label: "Tabs", href: "/demo/tabs" },
+  { label: "Toast", href: "/demo/toast" },
+  { label: "Tooltip", href: "/demo/tooltip" },
 ];
 
 const currentPath = Astro.url.pathname;

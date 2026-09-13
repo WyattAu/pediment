@@ -3,7 +3,9 @@ import { Tabs, TabPanel } from "pediment-components";
 
 export default function TabsDemo() {
   const [active, setActive] = createSignal("overview");
-  const [variant, setVariant] = createSignal<"underline" | "pills" | "enclosed">("underline");
+  const [variant, setVariant] = createSignal<
+    "underline" | "pills" | "enclosed"
+  >("underline");
 
   const tabs = [
     { id: "overview", label: "Overview", icon: "📋" },
@@ -14,7 +16,9 @@ export default function TabsDemo() {
   return (
     <div class="space-y-4">
       <div>
-        <label class="block text-xs text-[var(--text-secondary)] mb-1">Variant</label>
+        <label class="block text-xs text-[var(--text-secondary)] mb-1">
+          Variant
+        </label>
         <select
           value={variant()}
           onChange={(e) => setVariant(e.currentTarget.value as any)}
@@ -32,7 +36,10 @@ export default function TabsDemo() {
         <Show when={active() === "overview"}>
           <div>
             <h3 class="font-medium mb-2">Overview</h3>
-            <p class="text-sm text-[var(--text-secondary)]">Welcome to the overview tab. This content changes based on the active tab.</p>
+            <p class="text-sm text-[var(--text-secondary)]">
+              Welcome to the overview tab. This content changes based on the
+              active tab.
+            </p>
           </div>
         </Show>
         <Show when={active() === "features"}>
@@ -48,7 +55,9 @@ export default function TabsDemo() {
         <Show when={active() === "settings"}>
           <div>
             <h3 class="font-medium mb-2">Settings</h3>
-            <p class="text-sm text-[var(--text-secondary)]">Configure your preferences here.</p>
+            <p class="text-sm text-[var(--text-secondary)]">
+              Configure your preferences here.
+            </p>
           </div>
         </Show>
       </div>

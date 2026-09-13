@@ -5,7 +5,9 @@ function FallbackUI(props: { error: unknown; reset: () => void }) {
     <div class="rounded-[var(--radius-md)] border border-red-500/20 bg-red-500/5 p-6">
       <h3 class="text-lg font-semibold text-red-400">Something went wrong</h3>
       <p class="mt-2 text-sm text-[var(--text-secondary)]">
-        {props.error instanceof Error ? props.error.message : "An unexpected error occurred"}
+        {props.error instanceof Error
+          ? props.error.message
+          : "An unexpected error occurred"}
       </p>
       <button
         onClick={props.reset}
@@ -19,7 +21,9 @@ function FallbackUI(props: { error: unknown; reset: () => void }) {
 
 export default function AppErrorBoundary(props: { children: any }) {
   return (
-    <ErrorBoundary fallback={(err, reset) => <FallbackUI error={err} reset={reset} />}>
+    <ErrorBoundary
+      fallback={(err, reset) => <FallbackUI error={err} reset={reset} />}
+    >
       <Suspense fallback={<div class="animate-pulse">Loading...</div>}>
         {props.children}
       </Suspense>
